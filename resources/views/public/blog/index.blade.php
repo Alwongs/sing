@@ -8,10 +8,7 @@
     <main class="main">
         <ul class="blog-list">
             @foreach($posts as $post)
-                <li class="blog-list-item">
-                    <h2 class="blog-list-item__title">{{ $post->title }}</h2>
-                    <p>{!! $post->text !!}</p>
-                </li>
+                @include('public.blog.components.post-list-item')
             @endforeach
         </ul>
     </main>

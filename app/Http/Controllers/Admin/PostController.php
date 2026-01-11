@@ -22,7 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return '<h1>Create page is not ready yet...</h1>';
     }
 
     /**

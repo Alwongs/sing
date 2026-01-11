@@ -1,9 +1,8 @@
-@extends('_layouts.admin')
+@extends('_layouts.public')
 
 @section('content')
     <header class="header">
-        <h1>Administration</h1>
-        <p>description</p>
+        <h1>Home</h1>
     </header>
 
     <main class="main">

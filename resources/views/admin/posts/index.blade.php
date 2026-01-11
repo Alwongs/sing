@@ -4,6 +4,7 @@
     <div class="blog-page-container">
         <header class="header">
             <h1>Blog</h1>
+            <a class="blog-create-link" href="{{ route('posts.create') }}">Create</a>
         </header>
 
         <main class="main">

@@ -6,18 +6,12 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'WebSite') }}</title>
-        
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-        @vite(['resources/scss/public/app.scss', 'resources/js/app.js'])
+        @vite(['resources/scss/guest/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="admin-layout">
-            @include('public.top-panel')
-
-            <div class="content">
-                @yield('content')
-            </div>
+        <div class="guest-layout">
+            @yield('content')
         </div>        
     </body>
 </html>
