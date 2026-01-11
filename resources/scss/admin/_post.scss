@@ -1,0 +1,15 @@
+.blog-page-container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.blog-list-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    &__title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+        // text-decoration: underline;
+    }
+}

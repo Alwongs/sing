@@ -1,0 +1,20 @@
+.top-panel {
+    background-color: rgb(13, 92, 156);
+    height: 50px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.top-panel-navigation {
+    // border: 1px solid yellow;
+    display: flex;
+    gap: 20px;
+}
+.top-panel-nav-link {
+    color: #eee;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
