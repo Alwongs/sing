@@ -4,64 +4,92 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $posts = Post::latest()->paginate(10);
+        
         return view('admin.posts.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return '<h1>Create page is not ready yet...</h1>';
+        $categories = Category::all();
+
+        return view('admin.posts.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function createCategoryPost(Category $category)
     {
-        //
+        $categories = Category::all();        
+        $category_id = $category->id;
+
+        return view('admin.posts.create', compact('categories', 'category_id'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+
+
+    public function store(StoreRequest $request): RedirectResponse
     {
-        //
+        $post = Post::create($request->validated());
+
+        $redirect = $request->input('redirect', Post::REDIRECT_POSTS);
+        $allowedRedirects = [
+            Post::REDIRECT_POSTS,
+            Post::REDIRECT_CATEGORY_POSTS,
+        ];
+
+        if (!in_array($redirect, $allowedRedirects)) {
+            $redirect = Post::REDIRECT_POSTS;
+        }
+
+        if ($redirect === Post::REDIRECT_CATEGORY_POSTS && $post->category) {
+            return redirect()
+                ->route($redirect, $post->category)
+                ->with('success', 'Пост успешно создан!');
+        }
+
+        return redirect()
+            ->route($redirect, $post)
+            ->with('success', 'Пост успешно создан!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+
+
+    public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function edit(Post $post)
     {
-        //
+        return  view('admin.posts.edit', compact('post'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function update(UpdateRequest $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+
+        return redirect()
+            ->route('posts.index')
+            ->with('success', 'Пост успешно обновлён!');
+    }
+
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }

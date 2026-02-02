@@ -1,23 +1,4 @@
-.blog-page-container {
-    width: 1000px;
+.posts-index-container {
+    max-width: 1000px;
     margin: 0 auto;
-}
-
-.blog-create-link {
-    display: block;
-    border: 1px solid #ddd;
-    padding: 4px;
-    font-size: 12px;
-    color: #ddd;
-}
-
-.blog-list-item {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    &__title {
-        font-size: 20px;
-        font-weight: 500;
-        color: #fff;
-        // text-decoration: underline;
-    }
 }

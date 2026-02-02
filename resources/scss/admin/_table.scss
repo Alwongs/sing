@@ -1,0 +1,73 @@
+.table-item {
+    border-bottom: 1px solid #ddd;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: rgb(65, 88, 104);
+    &.mute {
+            color: rgb(202, 221, 236);      
+    }
+    &__id {
+        font-size: 14px;        
+        // border: 1px solid red;
+        flex: 0 0 30px;
+        &.mute {
+            // color: rgb(202, 221, 236);    
+        }        
+    }
+    &__title {
+        // border: 1px solid red;        
+        flex: 1;
+        font-size: 16px;
+        font-weight: 500;
+        // color: rgb(65, 88, 104);
+        text-transform: capitalize;
+        // text-decoration: underline;
+        transition: 0.2s;
+        &.mute {
+            // color: rgb(202, 221, 236);    
+        }
+        &:hover {
+            color: rgb(0, 149, 255);
+        }
+    }
+    &__date {
+        font-size: 14px;
+        font-weight: 300;   
+        // color: rgb(139, 161, 179);             
+    }
+}
+
+.table-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.table-item-btn {
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 26px;
+    transition: all 0.2s ease;
+    color: #eee;
+    cursor: pointer;
+
+}
+.table-item-btn-edit {
+    background-color: #306bb8; 
+    &:hover {
+        background-color: #4998ff;  
+        color: #fff;              
+    }       
+}
+.table-item-btn-delete {
+    background-color: #d13636;    
+    &:hover {
+        background-color: #ff4d4d;   
+        color: #fff;              
+    }     
+}

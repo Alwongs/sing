@@ -1,0 +1,61 @@
+Создание проекта и авторизация (breez):
+   - https://www.youtube.com/watch?v=DnN43kUPzy4
+
+Если ошибка "WARNINGS in child compilations (Use 'stats.children: true' resp. '--stats-children' for more details)"   
+   - Решение: npm install autoprefixer@10.4.5 --save-exact
+
+
+
+
+
+old helpers:
+
+Установка SCSS в Laravel: 
+    npm install -D sass
+.
+
+auth laravel-breeze:
+    https://laravel.com/docs/10.x/starter-kits#laravel-breeze
+.
+
+Плэйлист Видеоуроки "Социальная сеть":
+    https://www.youtube.com/playlist?list=PLImtFYx3AEQwPWNuyoIbnvSXSFK8nOa5G
+.
+
+Плэйлист Видуоуроки "Блог"
+    https://www.youtube.com/playlist?list=PLd2_Os8Cj3t8StX6GztbdMIUXmgPuingB
+.
+
+Проблемы с символической ссылкой:
+    https://qna.habr.com/q/518786
+.
+
+
+
+Работа с изобржениями (библиотека intervention):
+    https://tretyakov.net/post/laravel-image-intervention/
+
+Работа с изображениями (библиотека Image):
+    https://www.youtube.com/watch?v=Q4BfXWXpE0E
+.
+Загрузка изображений ларавел 8:
+    https://www.youtube.com/watch?v=-iuZhHDtOW4&t=479s   
+
+
+
+css анимация
+    https://metanit.com/web/html5/9.3.php    
+
+
+ссылка на фото
+    https://disk.yandex.ru/i/HVf9dKrBtpB8RQ
+
+
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+rm -rf storage/framework/cache/*
+rm -rf storage/framework/views/*
+rm -rf bootstrap/cache/*

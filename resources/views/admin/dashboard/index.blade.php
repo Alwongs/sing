@@ -2,14 +2,11 @@
 
 @section('content')
     <header class="header">
-        <h1>Administration</h1>
+        <h1 class="header__title">Administration</h1>
     </header>
 
     <main class="main">
 
     </main>
 
-    <footer class="footer">
-        footer
-    </footer>
 @endsection

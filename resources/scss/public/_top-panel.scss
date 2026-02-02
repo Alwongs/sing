@@ -11,12 +11,32 @@
     display: flex;
     gap: 20px;
 }
+
+
+
 .top-panel-nav-link {
     color: #eee;
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+        color: rgb(251, 255, 0);
+    }
+}
+
+.top-panel-auth-navigation {
+    display: flex;
+    gap: 20px;    
+}
+.top-panel-auth-nav-link {
+    color: #eee;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 400;
+    // letter-spacing: 1px;
     cursor: pointer;
     transition: 0.4s;
     &:hover {

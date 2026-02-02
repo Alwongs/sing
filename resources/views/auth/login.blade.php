@@ -28,6 +28,14 @@
                     <input type="password" class="form-input" id="password" name="password" required>
                 </div>
             </div>   
+
+            <!-- Remember Me -->
+            <div class="input-section">
+                <label for="remember">
+                <input id="remember" type="checkbox" name="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
+                    Запомнить меня
+                </label>
+            </div>            
             
             <div class="submit-section">
                 <a href="{{ route('register') }}">Register</a>
