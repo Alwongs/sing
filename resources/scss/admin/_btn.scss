@@ -11,11 +11,27 @@
     cursor: pointer;
 }
 
-.btn-grey-outline {
+.btn-info-outline {
     border: 1px solid rgb(65, 88, 104);
     color: rgb(65, 88, 104);   
     &:hover {
         background-color: rgb(45, 94, 129);
+        color: #fff;              
+    }        
+}
+.btn-edit-outline {
+    border: 1px solid rgb(15, 68, 214);
+    color: rgb(15, 68, 214);  
+    &:hover {
+        background-color: rgb(11, 113, 230);
+        color: #fff;              
+    }        
+}
+.btn-delete-outline {
+    border: 1px solid rgb(214, 15, 15);
+    color: rgb(214, 15, 15); 
+    &:hover {
+        background-color: rgb(255, 0, 0);
         color: #fff;              
     }        
 }

@@ -1,10 +1,11 @@
 @props([
+    'title' => 'Create',
     'route' => ''
 ])
 
 <a
-    class="btn btn-grey-outline"
+    class="btn btn-info-outline"
     href="{{ $route }}"
 >
-    Create
+    {{ $title }}
 </a>

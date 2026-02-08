@@ -7,15 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 { 
     use HasFactory;
 
-    public const REDIRECT_CATEGORY_POSTS = 'categories.show';
-    public const REDIRECT_POSTS = 'posts.index';    
+    public const ROUTE_TO_CATEGORY_POSTS = 'categories.show';
+    public const ROUTE_TO_POSTS = 'posts.index';    
 
-    protected $fillable = ['title', 'slug', 'text', 'is_published', 'category_id', 'user_id'];
+    protected $fillable = ['title', 'slug', 'text', 'image_name', 'is_published', 'category_id', 'user_id'];
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image_name) {
+            return Storage::url(config('images.paths.originals') . '/' . $this->image_name);
+        }
+        return null; // или путь к изображению по умолчанию
+    }
+
+    public function getPreviewUrlAttribute()
+    {
+        if ($this->image_name) {
+            return Storage::url(config('images.paths.previews') . '/' . $this->image_name);
+        }
+        return null;
+    }    
 
     public function user(): BelongsTo
     {
@@ -25,7 +42,7 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }    
+    }       
 
     protected static function booted()
     {

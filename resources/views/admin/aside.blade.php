@@ -35,6 +35,7 @@
             <a class="aside-nav-link" href="{{ route('projects') }}">Projects</a>
             <a class="aside-nav-link" href="{{ route('categories.index') }}">Categories</a>
             <a class="aside-nav-link" href="{{ route('posts.index') }}">Posts</a>
+            <a class="aside-nav-link" href="{{ route('admin.settings') }}">Settings</a>
         </nav>
     </div>
 </aside>

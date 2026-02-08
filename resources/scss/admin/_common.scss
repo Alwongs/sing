@@ -3,6 +3,7 @@
     letter-spacing: 1px;
     min-height: 100vh;
     display: flex;
+    color: rgb(65, 88, 104);
 }
 
 .aside {
@@ -32,7 +33,7 @@
     }
     &__actions {
         display: flex;   
-        gap: 4px;  
+        gap: 5px;  
     }
 }
 

@@ -7,24 +7,35 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use File;
+use Illuminate\Support\Facades\Storage;
+use App\Contracts\ImageServiceInterface;
 
 class PostController extends Controller
 {
+    private ImageServiceInterface $imageService;
+
+    public function __construct(ImageServiceInterface $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
+
     public function index()
     {
         $posts = Post::latest()->paginate(10);
-        
         return view('admin.posts.index', compact('posts'));
     }
 
     public function create()
     {
         $categories = Category::all();
-
         return view('admin.posts.create', compact('categories'));
     }
 
@@ -32,7 +43,6 @@ class PostController extends Controller
     {
         $categories = Category::all();        
         $category_id = $category->id;
-
         return view('admin.posts.create', compact('categories', 'category_id'));
     }
 
@@ -41,29 +51,38 @@ class PostController extends Controller
 
     public function store(StoreRequest $request): RedirectResponse
     {
-        $post = Post::create($request->validated());
+        $validated = $request->validated();
+        try {
+            if ($request->hasFile('image')) {
+                $newImageName = $this->imageService->saveInStorage($request);
+                $validated['image_name'] = $newImageName;
+            }
+            $post = Post::create($validated);
 
-        $redirect = $request->input('redirect', Post::REDIRECT_POSTS);
-        $allowedRedirects = [
-            Post::REDIRECT_POSTS,
-            Post::REDIRECT_CATEGORY_POSTS,
-        ];
-
-        if (!in_array($redirect, $allowedRedirects)) {
-            $redirect = Post::REDIRECT_POSTS;
+        } catch (\Exception $e) {
+            \Log::error('Ошибка при создании поста: ' . $e->getMessage());
+            return redirect()
+                ->route('posts.index')
+                ->with('error', 'Произошла ошибка при создании поста. Попробуйте снова.');
         }
-
-        if ($redirect === Post::REDIRECT_CATEGORY_POSTS && $post->category) {
+       
+        $redirect = $request->input('redirect', Post::ROUTE_TO_POSTS);
+        $allowedRedirects = [
+            Post::ROUTE_TO_POSTS,
+            Post::ROUTE_TO_CATEGORY_POSTS,
+        ];
+        if (!in_array($redirect, $allowedRedirects)) {
+            $redirect = Post::ROUTE_TO_POSTS;
+        }
+        if ($redirect === Post::ROUTE_TO_CATEGORY_POSTS && $post->category_id) {
             return redirect()
                 ->route($redirect, $post->category)
                 ->with('success', 'Пост успешно создан!');
         }
-
         return redirect()
             ->route($redirect, $post)
             ->with('success', 'Пост успешно создан!');
     }
-
 
 
 
@@ -79,7 +98,28 @@ class PostController extends Controller
 
     public function update(UpdateRequest $request, Post $post)
     {
-        $post->update($request->validated());
+        $validated = $request->validated();
+        try {
+            if ($request->hasFile('image')) {
+                $newImageName = $this->imageService->saveInStorage($request);
+
+                if ($post->image_name) {
+                    $this->imageService->removeFromStorage($post->image_name);
+                }
+
+                $validated['image_name'] = $newImageName;
+            }
+
+            $post->update($validated);
+
+        } catch (\Exception $e) {
+
+            \Log::error('Ошибка при обновлении поста: ' . $e->getMessage());
+
+            return redirect()
+                ->route('posts.index')
+                ->with('error', 'Произошла ошибка при обновлении поста. Попробуйте снова.');
+        }
 
         return redirect()
             ->route('posts.index')
@@ -89,6 +129,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->imageService->removeFromStorage($post->image_name);        
         $post->delete();
         return redirect()->route('posts.index');
     }

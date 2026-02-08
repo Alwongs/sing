@@ -14,13 +14,13 @@
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li style="color:red">{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('posts.store') }}">
+            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 @isset($category_id)
@@ -38,6 +38,8 @@
                     @include('admin.components.form.input-element', ['name' => 'title'])
 
                     @include('admin.components.form.textarea-element', ['name' => 'text'])   
+
+                    @include('admin.components.form.input-image-element')                                          
                       
                     @include('admin.components.form.select-boolean-element', [
                         'name' => 'is_published',

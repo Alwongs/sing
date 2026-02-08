@@ -20,7 +20,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('posts.update', $post) }}" method="POST">
+            <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -33,7 +33,22 @@
                     @include('admin.components.form.textarea-element', [
                         'name' => 'text',
                         'value' => $post->text
-                    ])                       
+                    ])    
+                    
+                    <div class="form-element">
+                        <div class="form-preview">
+                            <img
+                                src="{{  Storage::url('images/previews/' . $post->image_name) }}"
+                                alt="Изображение поста" 
+                            />                            
+                        </div>
+                    </div>
+
+                    {{-- <div class="form-element">
+                        <h6 style="color:red;">ТУт кнопку добавления нового изображения</h6>
+                    </div> --}}
+
+                    @include('admin.components.form.input-image-element')                      
                     
                     @include('admin.components.form.select-boolean-element', [
                         'name' => 'is_published',

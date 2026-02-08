@@ -13,13 +13,13 @@
         @auth
             <a class="top-panel-auth-nav-link" href="{{ route('profile') }}">{{ auth()->user()->name; }}</a>
 
-            {{-- <form action="{{ route('logout') }}" method="POST" class="top-panel-auth-nav-link">
+            <form action="{{ route('logout') }}" method="POST" class="top-panel-auth-nav-link">
                 @csrf
                 <button type="submit"  class="top-panel-auth-nav-link">Exit</button>
-            </form> --}}
+            </form>
         @else
-            {{-- <a class="top-panel-auth-nav-link" href="{{ route('login') }}">Вход</a>
-            <a class="top-panel-auth-nav-link" href="{{ route('register') }}">Регистрация</a> --}}
+            <a class="top-panel-auth-nav-link" href="{{ route('login') }}">Вход</a>
+            <a class="top-panel-auth-nav-link" href="{{ route('register') }}">Регистрация</a>
         @endauth
     </nav>    
 </div>

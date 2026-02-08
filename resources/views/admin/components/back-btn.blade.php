@@ -1,5 +1,5 @@
 <a
-    class="back-btn btn-grey-outline"
+    class="back-btn btn-info-outline"
     href="{{ url()->previous() }}"
 >
     <svg

@@ -18,7 +18,8 @@ class UpdateRequest extends FormRequest
         return [
             'title'        => ['required', 'string', 'max:255'],
             'text'         => ['nullable',  'string' ],
-            'is_published' => ['required', 'boolean'],            
+            'is_published' => ['required', 'boolean'],
+            'image'        => ['image:jpeg,png,jpg,webp', 'max:10000']      
         ];
     }
 
@@ -28,6 +29,8 @@ class UpdateRequest extends FormRequest
             'title.required' => 'Title must be filled.',
             'title.max'      => 'Title should not be more then 255 symbols',
             'text.string'    => 'Text should be string',
+            'image.max'      => 'Too large size of image. Maximum is 5MB',
+            'image.image'    => 'Wrong type of file. Sould be image',            
         ];
     }
 

@@ -13,7 +13,6 @@
 
     @include('admin.components.table.item-btn-delete', [
         'route' => $deleteRoute,
-        'model' => $model,
         'confirmMesage' => $confirmMessage
     ])
 </div>

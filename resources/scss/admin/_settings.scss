@@ -1,0 +1,47 @@
+.settings-index-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.settings-section {
+    &__header {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;        
+    }
+    &__actions {
+        display: flex;   
+        gap: 5px;  
+    }
+    &__title {
+        font-size: 18px;        
+    }
+    &__main {
+        margin-bottom: 20px;
+    }
+    &__description {
+        font-size: 14px;   
+        margin-bottom: 20px;
+
+    }
+    &__list {
+        padding-left: 10px;
+    }
+
+}
+
+.settings-dir-files-list {
+    // border: 1px solid red;
+    &:not(:last-child) {
+        margin-bottom: 20px; 
+    }
+    &__title {
+        font-size: 14px; 
+        margin-bottom: 4px;
+    }
+}
+
+.settings-file-list {
+    padding-left: 10px;
+}

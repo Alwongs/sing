@@ -65,4 +65,8 @@ button {
     height: 34px;
     padding: 0 20px;
     color: #fff;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(85, 214, 117);        
+    }
 }

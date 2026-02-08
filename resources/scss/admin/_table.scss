@@ -71,3 +71,11 @@
         color: #fff;              
     }     
 }
+
+.table-item-link {
+    font-weight: 600;
+    transition: 0.2s;
+    &:hover {
+        color: rgb(0, 174, 255);
+    }
+}

@@ -7,6 +7,7 @@
             <div class="header__actions">
                 @include('admin.components.back-btn')
                 @include('admin.components.create-btn', [
+                    'title' => 'Create Post',
                     'route' => route('posts.create.with-category', $category->id)
                 ])              
             </div> 
