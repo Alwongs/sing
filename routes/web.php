@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
     ]);
 
     Route::get('/admin/cleanup-images', [ImageCleanupController::class, 'show'])->name('admin.cleanup.images');
-    Route::post('/admin/cleanup-images/delete', [ImageCleanupController::class, 'delete'])->name('admin.cleanup.images.delete');
+    Route::delete('/admin/cleanup-images/delete', [ImageCleanupController::class, 'delete'])->name('admin.cleanup.images.delete');
 
     Route::get('/admin/settings', [SettingsController::class, 'index'])->name('admin.settings');
 

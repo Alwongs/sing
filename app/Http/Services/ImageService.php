@@ -93,5 +93,51 @@ class ImageService implements ImageServiceInterface
     {
         $data['image_name'] = $newImageName;
         return $data;
+    }   
+    
+    public function findUnusedImages($usedImages)
+    {
+        $imageDirs = $this->getImageDirs();
+        
+        $forgottenFiles = [];
+        $forgottenCount = 0;
+
+        foreach ($imageDirs as $imageDir) {
+            $allFiles = Storage::disk('public')->files($imageDir['path']);  
+
+            $usedImagesPrepeared = $this->buildFullPath($imageDir, $usedImages);
+
+            $forgottenFilesInDir = array_filter($allFiles, function ($file) use ($usedImagesPrepeared) {
+                return !in_array($file, $usedImagesPrepeared);
+            });      
+
+            $forgottenFiles[$imageDir['title']] = $forgottenFilesInDir;
+            $forgottenCount += count($forgottenFilesInDir);
+        }  
+        
+        return [$forgottenFiles, $forgottenCount];
+    }
+
+    private function buildFullPath($dir, $fileNames)
+    {
+        $result = [];
+        foreach ($fileNames as $fileName) {
+
+            $result[] = $dir['path'] . '/' . $fileName;
+        }  
+        return $result;
     }    
+    private function getImageDirs()
+    {
+        $imageDirs = [];
+        foreach (config('images.paths', []) as $title => $path) {
+            if (!empty($path)) {
+                $imageDirs[] = [
+                    'title' => $title,
+                    'path'  => $path
+                ];
+            }
+        }   
+        return $imageDirs;   
+    }
 }
