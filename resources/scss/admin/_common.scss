@@ -49,3 +49,13 @@
 .content-end {
     justify-content: flex-end;
 }
+
+.notification {
+    padding: 6px 10px;
+    font-size: 14px;
+    &.note-success {
+        border: 1px solid rgba(67, 170, 255, 0.9);
+        background-color: rgba(67, 170, 255, 0.4);
+        color: rgba(21, 52, 78, 0.9);
+    }
+}

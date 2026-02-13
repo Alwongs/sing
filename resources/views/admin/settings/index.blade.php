@@ -14,7 +14,7 @@
                 <li class="table-item">
                     <div class="table-item__settings-name">
                         <a
-                            href="{{ route('admin.cleanup.images') }}"
+                            href="{{ route('admin.settings.file-manage') }}"
                             class="table-item-link"
                         >
                             File management

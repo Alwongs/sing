@@ -7,33 +7,41 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PollinationsController;
 use App\Http\Controllers\Admin\SettingsController;
-use App\Http\Controllers\ImageCleanupController;
+use App\Http\Controllers\Admin\FileManageController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProjectController;
 
+// Route::get('/test', function () { return view('_layouts.test'); });
+
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::prefix('blog')->name('blog.')->group(function () {
+    Route::get('/', [BlogController::class, 'index'])->name('index');
+    Route::get('/category/{category}', [BlogController::class, 'category'])->name('category');
+    Route::get('/search', [BlogController::class, 'search'])->name('search');
+});
+Route::prefix('projects')->name('projects.')->group(function () {
+    Route::get('/projects', [ProjectController::class, 'index'])->name('index');
+});
+
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/pollinations', [PollinationsController::class, 'index'])->name('pollinations');
-    Route::post('/ajax/text', [PollinationsController::class, 'handleText'])->name('ajax.text'); 
-    
-    Route::get('/posts/create/{category}', [PostController::class, 'createCategoryPost'])->name('posts.create.with-category');    
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/pollinations', [PollinationsController::class, 'index'])->name('pollinations');
+        Route::post('/ajax/text', [PollinationsController::class, 'handleText'])->name('ajax.text'); 
+        Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+        Route::get('/settings/file-manage', [FileManageController::class, 'index'])->name('settings.file-manage');
+        Route::delete('/settings/delete-unused-images', [FileManageController::class, 'deleteUnusedImages'])->name('settings.delete-unused-images');        
+    });
 
     Route::resources([
         'posts'      => PostController::class,
         'categories' => CategoryController::class
     ]);
-
-    Route::get('/admin/cleanup-images', [ImageCleanupController::class, 'show'])->name('admin.cleanup.images');
-    Route::delete('/admin/cleanup-images/delete', [ImageCleanupController::class, 'delete'])->name('admin.cleanup.images.delete');
-
-    Route::get('/admin/settings', [SettingsController::class, 'index'])->name('admin.settings');
-
+    Route::get('/posts/create/{category}', [PostController::class, 'createCategoryPost'])->name('posts.create.with-category');  
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');

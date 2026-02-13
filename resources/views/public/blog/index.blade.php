@@ -1,19 +1,23 @@
 @extends('_layouts.public')
 
 @section('content')
+
     <header class="header">
-        <h1>Blog</h1>
+        <h1 class="header__title">Blog</h1>
     </header>
 
-    <main class="main">
-        <ul class="blog-list">
-            @foreach($posts as $post)
-                @include('public.blog.components.post-list-item')
+    <section class="category-list">
+        <ul>
+            @foreach($categories as $category)
+                @include('public.blog.components.category-card', ['title' => $category->title])
             @endforeach
         </ul>
-    </main>
+    </section>      
 
-    <footer class="footer">
-        footer
-    </footer>
+    <section class="blog-list">
+        @foreach($posts as $post)
+            @include('public.blog.components.blog-card')
+        @endforeach
+    </section>      
+
 @endsection

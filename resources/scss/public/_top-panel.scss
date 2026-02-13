@@ -1,11 +1,15 @@
 .top-panel {
     background-color: rgb(199, 112, 12);
     height: 50px;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
+
+
+// .top-panel-flex-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
 .top-panel-navigation {
     // border: 1px solid yellow;
     display: flex;
@@ -24,6 +28,10 @@
     transition: 0.4s;
     &:hover {
         color: rgb(251, 255, 0);
+    }
+    &.active {
+        border-bottom: 3px solid yellow;
+        color: rgb(251, 255, 0);        
     }
 }
 

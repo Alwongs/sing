@@ -1,0 +1,18 @@
+.aside {
+    // background-color: #d3915b8e;
+    flex: 0 0 220px;
+    height: 100vh;
+}
+
+.card {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0, 0.1);
+    padding: 16px;
+    margin-bottom: 20px;
+    &__title {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 14px;        
+    }
+}

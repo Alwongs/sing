@@ -98,23 +98,17 @@ class ImageService implements ImageServiceInterface
     public function findUnusedImages($usedImages)
     {
         $imageDirs = $this->getImageDirs();
-        
         $forgottenFiles = [];
         $forgottenCount = 0;
-
         foreach ($imageDirs as $imageDir) {
             $allFiles = Storage::disk('public')->files($imageDir['path']);  
-
             $usedImagesPrepeared = $this->buildFullPath($imageDir, $usedImages);
-
             $forgottenFilesInDir = array_filter($allFiles, function ($file) use ($usedImagesPrepeared) {
                 return !in_array($file, $usedImagesPrepeared);
             });      
-
             $forgottenFiles[$imageDir['title']] = $forgottenFilesInDir;
             $forgottenCount += count($forgottenFilesInDir);
         }  
-        
         return [$forgottenFiles, $forgottenCount];
     }
 
@@ -122,11 +116,11 @@ class ImageService implements ImageServiceInterface
     {
         $result = [];
         foreach ($fileNames as $fileName) {
-
             $result[] = $dir['path'] . '/' . $fileName;
         }  
         return $result;
     }    
+
     private function getImageDirs()
     {
         $imageDirs = [];
@@ -139,5 +133,37 @@ class ImageService implements ImageServiceInterface
             }
         }   
         return $imageDirs;   
+    }
+
+    public function removeUnusedImages($usedImages)
+    {
+        list($forgottenFiles, $forgottenCount) = $this->findUnusedImages($usedImages);
+        if ($forgottenCount === 0) {
+            return [0, 0, 'no_files'];
+        }
+        $allFilesToDelete = [];
+        foreach ($forgottenFiles as $files) {
+            foreach ($files as $file) {
+                if (Storage::disk('public')->exists($file)) {
+                    $allFilesToDelete[] = $file;
+                }
+            }
+        }            
+        $deletedCount = 0;
+        if (!empty($allFilesToDelete)) {
+            $batchSize = 500;
+            $chunks = array_chunk($allFilesToDelete, $batchSize);
+            foreach ($chunks as $chunk) {
+                Storage::disk('public')->delete($chunk);
+                $deletedCount += count($chunk);
+            }
+            \Log::info('Удалены неиспользуемые изображения (пачками)', [
+                'count' => $deletedCount,
+                'total_found' => $forgottenCount,
+                'chunks' => count($chunks),
+                'files' => array_slice($allFilesToDelete, 0, 50),
+            ]);
+        }
+        return [$deletedCount, $forgottenCount, 'success'];       
     }
 }

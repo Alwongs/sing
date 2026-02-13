@@ -10,12 +10,22 @@
         @vite(['resources/scss/public/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="admin-layout">
+        <div class="public-layout">
             @include('public.top-panel')
 
-            <div class="content">
-                @yield('content')
+            <div class="content-wrapper">
+                <div class="container flex-container flex-center-start">
+                    @include('public.aside-left')
+
+                    <main class="main">
+                        @yield('content')
+                    </main>
+
+                    @include('public.aside-right')
+                </div>
             </div>
+
+            @include('public.footer')
         </div>        
     </body>
 </html>

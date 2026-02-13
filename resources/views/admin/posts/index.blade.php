@@ -12,9 +12,13 @@
 
         <main class="main">
             <ul class="table">
-                @foreach($posts as $post)
-                    @include('admin.posts.components.post-item')
-                @endforeach
+                @if(count($posts))
+                    @foreach($posts as $post)
+                        @include('admin.posts.components.post-item')
+                    @endforeach
+                @else 
+                    <li class="table-item empty-list">Empty list</li>                 
+                @endif
             </ul>
         </main>
     </div>

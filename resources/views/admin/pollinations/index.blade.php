@@ -56,7 +56,7 @@
                 }, 10);
 
                 try {
-                    const response = await fetch('/ajax/text', {
+                    const response = await fetch('/admin/ajax/text', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

@@ -31,8 +31,7 @@
         </h2>
 
         <nav class="aside-app-navigation">
-            <a class="aside-nav-link" href="{{ route('pollinations') }}">Pollinations</a>
-            <a class="aside-nav-link" href="{{ route('projects') }}">Projects</a>
+            <a class="aside-nav-link" href="{{ route('admin.pollinations') }}">Pollinations</a>
             <a class="aside-nav-link" href="{{ route('categories.index') }}">Categories</a>
             <a class="aside-nav-link" href="{{ route('posts.index') }}">Posts</a>
             <a class="aside-nav-link" href="{{ route('admin.settings') }}">Settings</a>

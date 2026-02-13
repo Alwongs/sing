@@ -6,15 +6,17 @@
     gap: 20px;
     color: rgb(65, 88, 104);
     &.mute {
-            color: rgb(202, 221, 236);      
+        color: rgb(202, 221, 236);      
+    }
+    &.empty-list {
+        justify-content: center;
+        color: rgb(126, 149, 167);
+        border: none;        
     }
     &__id {
         font-size: 14px;        
         // border: 1px solid red;
-        flex: 0 0 30px;
-        &.mute {
-            // color: rgb(202, 221, 236);    
-        }        
+        flex: 0 0 30px;       
     }
     &__title {
         // border: 1px solid red;        

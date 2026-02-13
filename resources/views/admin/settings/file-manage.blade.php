@@ -10,10 +10,13 @@
         </header>
 
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="notification note-success">test notification</div>
         @endif
 
+                    
+
         <main class="main">
+
             <section class="settings-section">
                 <header class="settings-section__header">
                     <h2 class="settings-section__title">
@@ -38,11 +41,11 @@
                         @if($forgottenCount > 0)
                             @include('admin.components.btn.delete-btn', [
                                 'title' => 'Remove old images',
-                                'route' => route('admin.cleanup.images.delete'),
+                                'route' => route('admin.settings.delete-unused-images'),
                                 'confirmMessage' => 'Are you sure you want to delete all unused images?'
                             ])  
                         @else
-                            <div class="alert alert-info">Нет мусорных изображений — всё чисто!</div>
+                            <div class="alert alert-info">No unused images!</div>
                         @endif
                     </div>
                 </footer>

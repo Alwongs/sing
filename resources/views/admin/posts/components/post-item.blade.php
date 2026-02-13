@@ -1,6 +1,6 @@
 <li class="table-item {{ !$post->is_published ? 'mute' : ''}}">
 
-    @include('admin.components.table.item-id', ['id' => $post->id])
+    {{-- @include('admin.components.table.item-id', ['id' => $post->id]) --}}
 
     @include('admin.components.table.item-title', ['title' => $post->title, 'url' => route('posts.show', $post)])    
 
