@@ -31,6 +31,28 @@ auth laravel-breeze:
 .
 
 
+Защита от html тегов 
+    composer require stevebauman/purify
+    php artisan vendor:publish --provider="Stevebauman\Purify\PurifyServiceProvider"
+
+    use Stevebauman\Purify\Facades\Purify;
+    class Post extends Model
+    {
+        // ...
+        public function setBodyAttribute($value)
+        {
+            $this->attributes['body'] = Purify::clean($value);
+        }
+    }    
+
+    // в шаблоне
+    <div class="content">
+        {!! $post->body !!}
+    </div>
+   
+
+
+
 
 Работа с изобржениями (библиотека intervention):
     https://tretyakov.net/post/laravel-image-intervention/

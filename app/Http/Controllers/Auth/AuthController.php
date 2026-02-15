@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'), $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/admin/dashboard');
         }
 
         return back()->withErrors(['email' => 'Wrong auth data']);

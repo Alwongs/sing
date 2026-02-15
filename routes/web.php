@@ -19,8 +19,9 @@ use App\Http\Controllers\ProjectController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');
-    Route::get('/category/{category}', [BlogController::class, 'category'])->name('category');
+    Route::get('/category/{category}', [BlogController::class, 'showCategory'])->name('category');
     Route::get('/search', [BlogController::class, 'search'])->name('search');
+    Route::get('/post/{post}', [BlogController::class, 'showPost'])->name('post');
 });
 Route::prefix('projects')->name('projects.')->group(function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('index');

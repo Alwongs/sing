@@ -4,15 +4,7 @@
 
     <header class="header">
         <h1 class="header__title">Blog</h1>
-    </header>
-
-    <section class="category-list">
-        <ul>
-            @foreach($categories as $category)
-                @include('public.blog.components.category-card', ['title' => $category->title])
-            @endforeach
-        </ul>
-    </section>      
+    </header>     
 
     <section class="blog-list">
         @foreach($posts as $post)

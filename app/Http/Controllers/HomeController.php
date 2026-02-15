@@ -10,8 +10,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->paginate(5);
+        // $posts = Post::latest()->paginate(5);
+        // return view('public.home.index', compact('posts'));
 
-        return view('public.home.index', compact('posts'));
+        return redirect()->route('blog.index');
     }
 }

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\HtmlString;
+use Stevebauman\Purify\Facades\Purify;
 
 class Post extends Model
 { 
@@ -17,6 +19,11 @@ class Post extends Model
     public const ROUTE_TO_POSTS = 'posts.index';    
 
     protected $fillable = ['title', 'slug', 'text', 'image_name', 'is_published', 'category_id', 'user_id'];
+
+    public function setTextAttribute($value)
+    {
+        $this->attributes['text'] = Purify::clean($value);
+    }
 
     public function getImageUrlAttribute()
     {
@@ -33,6 +40,11 @@ class Post extends Model
         }
         return null;
     }    
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }     
 
     public function user(): BelongsTo
     {

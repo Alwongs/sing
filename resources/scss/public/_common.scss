@@ -2,6 +2,9 @@
 .border-red {
     border: 3px solid red;    
 }
+.test-class {
+    color:red;
+}
 
 body {
     background-color: #ddd;
@@ -14,21 +17,16 @@ body {
     margin: 0 auto;
 }
 
-.content-wrapper {
-    // border: 3px solid red;
+mark {
+    // background-color: red;
 }
 
-
-.main {
-    // background-color: #d3915b8e;
-    // border: 3px solid red;  
+.main { 
     flex: 1 1 600px;
-    // padding-top: 20px;
     padding: 0 20px;
 }
 
 .header {
-    // background-color: #eee;
     border-bottom: 1px solid #aaa;
     padding-bottom: 8px;
     margin-bottom: 30px;
@@ -36,6 +34,20 @@ body {
         font-size: 24px;
     }
 }
+
+.alert {
+    // border: 1px solid #aaa;
+    margin-bottom: 20px;
+    // padding: 6px;
+    line-height: 1;
+}
+.alert-empty {
+    // background-color: rgba(117, 117, 117, 0.1);
+    // border: 1px solid rgba(117, 117, 117, 0.2);
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
 
 .footer {
     background-color: rgb(204, 202, 200);

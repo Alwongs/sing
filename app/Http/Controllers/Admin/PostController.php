@@ -57,6 +57,12 @@ class PostController extends Controller
                 $newImageName = $this->imageService->saveInStorage($request);
                 $validated['image_name'] = $newImageName;
             }
+
+            // $post = new Post();
+            // $post->title = $request->title;
+            // $post->body = $request->body;
+            // $post->save();
+
             $post = Post::create($validated);
 
         } catch (\Exception $e) {
@@ -71,6 +77,7 @@ class PostController extends Controller
             Post::ROUTE_TO_POSTS,
             Post::ROUTE_TO_CATEGORY_POSTS,
         ];
+        
         if (!in_array($redirect, $allowedRedirects)) {
             $redirect = Post::ROUTE_TO_POSTS;
         }
@@ -79,6 +86,7 @@ class PostController extends Controller
                 ->route($redirect, $post->category)
                 ->with('success', 'Пост успешно создан!');
         }
+
         return redirect()
             ->route($redirect, $post)
             ->with('success', 'Пост успешно создан!');

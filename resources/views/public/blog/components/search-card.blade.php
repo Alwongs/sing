@@ -3,38 +3,29 @@
 ])
 
 @if($post)
-    <article class="blog-card card">
-        @if($post->image_url)
-            <div class="blog-card-image">
-                <img
-                    src="{{  $post->image_url }}"
-                    alt="Post image" 
-                    loading="lazy"
-                />
-            </div>
-        @endif
+    <article class="search-card card">
         
-        <h2 class="blog-card-title">{{ $post->title }}</h2>
+        <h2 class="search-card-title">{{ $post->title }}</h2>
 
-        <div class="blog-card-text-wrapper">
-             {!! $post->highlighted_text ?? Str::limit(strip_tags($post->text), 150) !!}
+        <div class="search-card-text-wrapper">
+             {!! Str::limit($post->highlighted_text, 400) ?? Str::limit(strip_tags($post->text), 300) !!}
 
             <a href="{{ route('blog.post', $post->slug) }}" class="read-more-link">
                 Читать далее
             </a>
         </div>        
 
-        <footer class="blog-card-footer">
+        <footer class="search-card-footer">
             <div>        
                 <p class="blog-card-footer__likes">
                     *likes*
                 </p>  
             </div>  
             <div>      
-                <p class="blog-card-footer__author">
+                <p class="search-card-footer__author">
                     {{ $post->user->name }}
                 </p>
-                <p class="blog-card-footer__date">
+                <p class="search-card-footer__date">
                     {{ $post->created_at->format('d.m.Y') }}
                 </p>  
             </div>         

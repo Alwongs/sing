@@ -6,7 +6,7 @@
                     <a class="top-panel-nav-link" href="{{ route('admin.dashboard') }}">Admin</a>  
                 @endif 
             @endauth
-            <a class="top-panel-nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>        
+            {{-- <a class="top-panel-nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>         --}}
             <a class="top-panel-nav-link {{ request()->routeIs('blog.index') ? 'active' : '' }}" href="{{ route('blog.index') }}">Blog</a>
         </nav>    
 
@@ -14,8 +14,8 @@
             @auth
                 <div></div>
             @else
-                <a class="top-panel-auth-nav-link" href="{{ route('login') }}">Вход</a>
-                <a class="top-panel-auth-nav-link" href="{{ route('register') }}">Регистрация</a>
+                <a class="top-panel-auth-nav-link" href="{{ route('login') }}">Login</a>
+                <a class="top-panel-auth-nav-link" href="{{ route('register') }}">Register</a>
             @endauth
         </nav> 
     </div>

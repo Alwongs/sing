@@ -1,0 +1,40 @@
+.search-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.search-card-text-wrapper {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.search-card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5; 
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;   
+    margin-bottom: 5px; 
+}
+
+.search-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    div {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+    }
+    &__date {
+        font-size: 12px;
+    }
+}

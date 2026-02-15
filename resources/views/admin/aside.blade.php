@@ -1,6 +1,6 @@
 <aside class="aside">
     <nav class="aside-home-block">
-        <a class="aside-home-block__link" href="{{ url('/') }}">Website</a>        
+        <a class="aside-home-block__link" href="{{ route('blog.index') }}">Website</a>        
     </nav>
 
     <div class="aside-auth-block">
