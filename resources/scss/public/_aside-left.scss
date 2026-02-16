@@ -37,8 +37,9 @@
     &__link {
         font-size: 16px;
         font-weight: 500;
-        transition: 0.2s;
         color: rgb(81, 107, 121);
+        text-transform: capitalize;
+        transition: 0.2s;
         &:hover {
             color: rgb(0, 204, 255);
         }

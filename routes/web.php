@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\FileManageController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProjectController;
 
 // Route::get('/test', function () { return view('_layouts.test'); });
@@ -21,7 +22,8 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');
     Route::get('/category/{category}', [BlogController::class, 'showCategory'])->name('category');
     Route::get('/search', [BlogController::class, 'search'])->name('search');
-    Route::get('/post/{post}', [BlogController::class, 'showPost'])->name('post');
+    Route::get('/post/{post}', [BlogController::class, 'showPost'])->name('post'); 
+    Route::post('/post/{post}/comments', [CommentController::class,'store'])->name('comments.store');    
 });
 Route::prefix('projects')->name('projects.')->group(function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('index');

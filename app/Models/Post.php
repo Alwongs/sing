@@ -18,8 +18,45 @@ class Post extends Model
     public const ROUTE_TO_CATEGORY_POSTS = 'categories.show';
     public const ROUTE_TO_POSTS = 'posts.index';    
 
-    protected $fillable = ['title', 'slug', 'text', 'image_name', 'is_published', 'category_id', 'user_id'];
+    protected $fillable = ['title', 'slug', 'text', 'image_name', 'is_published', 'category_id', 'user_id'];    
 
+    public function user(): BelongsTo
+    {
+        return $this->BelongsTo(User::class, 'user_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }   
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->latest();
+    }    
+
+
+    protected static function booted()
+    {
+        static::creating(function ($post) {
+            if (Auth::check() && !$post->user_id) {
+                $post->user_id = Auth::id();
+            }
+
+            if ($post->title) {            
+                $originalSlug = $slug = Str::slug($post->title);
+
+                // ✅ 3. Проверяем уникальность с помощью одного запроса
+                $counter = 1;
+                while (static::where('slug', $slug)->exists()) {
+                    $slug = $originalSlug . '-' . $counter++;
+                }
+
+                $post->slug = $slug;
+            }
+        });
+    }  
+    
     public function setTextAttribute($value)
     {
         $this->attributes['text'] = Purify::clean($value);
@@ -45,35 +82,4 @@ class Post extends Model
     {
         return 'slug';
     }     
-
-    public function user(): BelongsTo
-    {
-        return $this->BelongsTo(User::class, 'user_id');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }       
-
-    protected static function booted()
-    {
-        static::creating(function ($post) {
-            if (Auth::check() && !$post->user_id) {
-                $post->user_id = Auth::id();
-            }
-
-            if ($post->title) {            
-                $originalSlug = $slug = Str::slug($post->title);
-
-                // ✅ 3. Проверяем уникальность с помощью одного запроса
-                $counter = 1;
-                while (static::where('slug', $slug)->exists()) {
-                    $slug = $originalSlug . '-' . $counter++;
-                }
-
-                $post->slug = $slug;
-            }
-        });
-    }    
 }

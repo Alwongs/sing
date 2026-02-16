@@ -1,26 +1,25 @@
-.blog-list-item {
-    margin-bottom: 30px;
-    // border-bottom: 1px solid #ccc;
-    &__header {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 10px;
-        margin-bottom: 4px;
-    }
-    &__title {
+// .blog-list-item {
+//     margin-bottom: 30px;
+//     &__header {
+//         display: flex;
+//         justify-content: center;
+//         align-items: flex-end;
+//         gap: 10px;
+//         margin-bottom: 4px;
+//     }
+//     &__title {
 
-    }
-    &__text {
+//     }
+//     &__text {
           
-    }
-    &__footer {
+//     }
+//     &__footer {
 
-    }
-    &__date {
-        font-size: 12px;
-    }
-}
+//     }
+//     &__date {
+//         font-size: 12px;
+//     }
+// }
 .blog-card-image {
     // border: 3px solid rgb(40, 158, 255);
     border-radius: 8px;    
@@ -44,15 +43,15 @@
     margin-bottom: 10px;
 }
 
-.blog-card-text-wrapper {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.4;
-    margin-bottom: 10px;
-}
+// .blog-card-text-wrapper {
+//     display: -webkit-box;
+//     -webkit-line-clamp: 4;
+//     -webkit-box-orient: vertical;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     line-height: 1.4;
+//     margin-bottom: 10px;
+// }
 
 .blog-card-text {
     display: -webkit-box;
@@ -84,12 +83,39 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    div {
+    > div {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         gap: 10px;
+    }
+    &__comments {
+        font-size: 14px;   
+    }
+    &__author {
+        display: flex;
+        align-items: center; 
+        font-weight: 500;  
+        gap: 6px;     
+        font-size: 12px;        
+    }
+    &__image {
+        border: 1px solid grey;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        overflow: hidden;
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
     }
     &__date {
         font-size: 12px;
     }
+}
+
+.blog-detail {
+    // border: 3px solid blue;
+    margin-bottom: 30px;
 }

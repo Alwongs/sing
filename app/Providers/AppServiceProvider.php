@@ -2,13 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ImageServiceInterface;
 use App\Http\Services\ImageService;
-use Illuminate\Support\Str;
-use HTMLPurifier;
-use HTMLPurifier_Config;
 use App\Services\HtmlPurifierService;
+use App\Observers\CategoryObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         // possible not used
         \Blade::directive('purify', function ($expression) {
             return "<?php echo HTMLPurifier::getInstance()->purify({$expression}); ?>";
-        });      
+        });     
+        Category::observe(CategoryObserver::class); 
     }
 }

@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        @if(! app()->environment('production'))
+            <meta name="robots" content="noindex, nofollow">
+        @endif        
+
         <title>{{ config('app.name', 'WebSite') }}</title>
 
         @vite(['resources/scss/public/app.scss', 'resources/js/app.js'])

@@ -16,7 +16,7 @@
         
         <h2 class="blog-card-title">{{ $post->title }}</h2>
 
-        <div class="blog-card-text-wrapper">
+        <div class="blog-card-text">
              {!! $post->highlighted_text ?? Str::limit(strip_tags($post->text), 150) !!}
 
             <a href="{{ route('blog.post', $post->slug) }}" class="read-more-link">
@@ -24,21 +24,11 @@
             </a>
         </div>        
 
-        <footer class="blog-card-footer">
-            <div>        
-                <p class="blog-card-footer__likes">
-                    *likes*
-                </p>  
-            </div>  
-            <div>      
-                <p class="blog-card-footer__author">
-                    {{ $post->user->name }}
-                </p>
-                <p class="blog-card-footer__date">
-                    {{ $post->created_at->format('d.m.Y') }}
-                </p>  
-            </div>         
-        </footer>
+        @include('public.blog.components.card-footer', [
+            'author' => $post->user->name,
+            'date'   => $post->created_at,
+            'commentsCount' => $post->comments->count()
+        ])
     </article>
 @endif
 
