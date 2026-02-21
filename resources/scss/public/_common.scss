@@ -7,11 +7,11 @@
 }
 
 body {
-    background-color: #ddd;
+    background-color: #eee;
 }
 .public-layout {
     // background-color: #aae1eb;
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Arial', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(44, 59, 66);
     min-height: 100vh;
     margin: 0 auto;
@@ -35,21 +35,31 @@ mark {
     }
 }
 
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0, 0.1);
+    padding: 16px;
+    margin-bottom: 20px;
+    &__title {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 14px;        
+    }
+}
+
 .alert {
     // border: 1px solid #aaa;
     margin-bottom: 20px;
-    // padding: 6px;
     line-height: 1;
 }
 .alert-empty {
-    // background-color: rgba(117, 117, 117, 0.1);
-    // border: 1px solid rgba(117, 117, 117, 0.2);
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
 
 .footer {
-    background-color: rgb(204, 202, 200);
+    background-color: rgb(222, 222, 222);
     height: 200px;
 }

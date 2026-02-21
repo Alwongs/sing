@@ -1,10 +1,49 @@
 
 
-.comment-form-section {
-    border: 2px solid red;   
-    margin-bottom: 20px; 
+.comment-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .comment-list-section {
-    border: 2px solid red;
+    // border: 2px solid red;
+}
+
+.comment {
+    margin-bottom: 30px;
+}
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    &__image {
+        display: flex;
+        justify-content: center;
+        padding: 2px;        
+        border: 1px solid red;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        overflow: hidden;
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__name {
+        font-size: 14px;        
+        font-weight: 600;
+    }
+}
+.comment-body {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+.comment-footer {
+    display: flex;
+    gap: 10px;
+    color: rgba(44, 59, 66, 0.4);
 }

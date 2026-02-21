@@ -1,25 +1,4 @@
-// .blog-list-item {
-//     margin-bottom: 30px;
-//     &__header {
-//         display: flex;
-//         justify-content: center;
-//         align-items: flex-end;
-//         gap: 10px;
-//         margin-bottom: 4px;
-//     }
-//     &__title {
 
-//     }
-//     &__text {
-          
-//     }
-//     &__footer {
-
-//     }
-//     &__date {
-//         font-size: 12px;
-//     }
-// }
 .blog-card-image {
     // border: 3px solid rgb(40, 158, 255);
     border-radius: 8px;    
@@ -42,16 +21,6 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
-
-// .blog-card-text-wrapper {
-//     display: -webkit-box;
-//     -webkit-line-clamp: 4;
-//     -webkit-box-orient: vertical;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     line-height: 1.4;
-//     margin-bottom: 10px;
-// }
 
 .blog-card-text {
     display: -webkit-box;

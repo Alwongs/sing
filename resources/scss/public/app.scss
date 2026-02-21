@@ -1,5 +1,6 @@
 @use 'reset';
 @use 'common';
+@use 'notification';
 @use 'container';
 @use 'btn';
 @use 'top-panel';
@@ -8,4 +9,5 @@
 @use 'aside-right';
 @use 'blog';
 @use 'comment';
+@use 'form';
 @use 'search';

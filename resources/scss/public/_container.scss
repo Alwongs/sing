@@ -9,22 +9,35 @@
 .flex-container {
     display: flex;
 }
+
 .flex-start-center {
     align-items: center;      
 }
+.flex-center-center {
+    justify-content: center;
+    align-items: center;    
+}
+.flex-end-center {
+    justify-content: center;
+    align-items: center;    
+}
+.flex-end-center {
+    justify-content: flex-end;
+    align-items: center;     
+}
+
 .flex-center-start {
     justify-content: center;    
 }
-
 .flex-between-center {
     justify-content: space-between;
     align-items: center;    
 }
-
 .flex-between-end {
     justify-content: space-between;
     align-items: flex-end;    
 }
+
 
 .gap-10 {
     gap: 10px;
