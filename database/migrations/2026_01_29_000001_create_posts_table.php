@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug', 255)->unique();
             $table->text('text');
             $table->string('image_name')->nullable();             
-            $table->boolean('is_published')->default(true);
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
 
             $table->index(['is_published', 'created_at']);

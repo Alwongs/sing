@@ -26,11 +26,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
-        // possible not used
-        \Blade::directive('purify', function ($expression) {
-            return "<?php echo HTMLPurifier::getInstance()->purify({$expression}); ?>";
-        });     
+    {  
         Category::observe(CategoryObserver::class); 
     }
 }

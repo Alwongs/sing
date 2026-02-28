@@ -1,19 +1,19 @@
 @extends('_layouts.admin')
 
 @section('content')
-    <div class="posts-index-container">
+    <div class="users-index-container">
         <header class="header">
-            <h1 class="header__title">Categories</h1>
+            <h1 class="header__title">Users</h1>
             <div class="header__actions">
                 @include('admin._components.back-btn')
-                @include('admin._components.create-btn', ['route' => route('categories.create')])              
+                {{-- @include('admin._components.create-btn', ['route' => route('users.create')])               --}}
             </div>            
         </header>
 
         <main class="main">
             <ul class="table">
-                @foreach($categories as $category)
-                    @include('admin.categories.components.category-item')
+                @foreach($users as $user)
+                    @include('admin.users.components.user-item')
                 @endforeach
             </ul>
         </main>

@@ -3,15 +3,16 @@
 namespace App\Http\Requests\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -24,17 +25,16 @@ class StoreRequest extends FormRequest
         return [
             'guest_name'  => ['sometimes', 'required_if:auth,false', 'max:50'],            
             'body'        => ['required', 'string', 'max:2000'],
+            'is_approved'  => ['required', 'boolean'],
         ];
     }
 
-    protected function prepareForValidation()
+    public function messages()
     {
-        if (auth()->check()) {
-            return;
-        }
-
-        $this->merge([
-            'guest_name' => trim($this->guest_name) ?: 'Guest',
-        ]);
-    }    
+        return [
+            'guest_name.max' => 'Title should not be more then 50 symbols',
+            'body.max' => 'Body should not be more then 2000 symbols',
+        ];
+    }
+     
 }

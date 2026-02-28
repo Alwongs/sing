@@ -19,6 +19,7 @@ class BlogController extends Controller
 
     public function showCategory(Category $category)
     {
+        // dd($category);
         $posts = $category->posts()->with('user')->paginate(10);
         return view('public.blog.category', compact('category', 'posts'));
     }

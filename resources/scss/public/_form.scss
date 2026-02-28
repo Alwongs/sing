@@ -12,6 +12,9 @@
     border: 1px solid rgba(44, 59, 66, 0.4);
     border-radius: 10px;
     margin-bottom: 10px;
+    &.w-25 {
+        width: 250px;
+    }
 }
 
 .comment-form-textarea, .comment-form-input {

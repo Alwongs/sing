@@ -5,7 +5,7 @@
         <header class="header">
             <h1 class="header__title">New Category</h1>
             <div class="header__actions">
-                @include('admin.components.back-btn')
+                @include('admin._components.back-btn')
             </div>
         </header>
 

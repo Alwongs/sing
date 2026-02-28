@@ -5,7 +5,7 @@
         <header class="header">
             <h1 class="header__title">File management</h1>
             <div class="header__actions">
-                @include('admin.components.back-btn')            
+                @include('admin._components.back-btn')            
             </div> 
         </header>
 
@@ -39,7 +39,7 @@
                 <footer class="settings-section__footer">
                     <div class="submit-section">
                         @if($forgottenCount > 0)
-                            @include('admin.components.btn.delete-btn', [
+                            @include('admin._components.btn.delete-btn', [
                                 'title' => 'Remove old images',
                                 'route' => route('admin.settings.delete-unused-images'),
                                 'confirmMessage' => 'Are you sure you want to delete all unused images?'

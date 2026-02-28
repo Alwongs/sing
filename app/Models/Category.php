@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class Category extends Model
 {
     use HasFactory;
 
     protected $fillable = ['title', 'slug'];
+
+    protected $routeKeyName = 'slug';
 
     protected static function booted()
     {
@@ -28,9 +31,13 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }   
-    
+
     public function getRouteKeyName()
     {
-        return 'slug';
-    }    
+        if (Request::is('admin/*')) {
+            return 'id';
+        }
+        
+        return 'slug'; 
+    }      
 }

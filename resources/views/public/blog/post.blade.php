@@ -1,6 +1,13 @@
 @extends('_layouts.public')
 
 @section('content')
+    @php
+        $notApproved = 0;
+        if (auth()->user()?->is_root) {
+            $notApproved = $post->comments->count() - $post->approvedComments->count();
+        }
+    @endphp
+
     <header class="header">
         <h1 class="header__title">
             {{ $post->title }}
@@ -8,9 +15,16 @@
     </header>
 
     <section class="blog-detail card">
-        
-        {{-- Give class for style!!!!!!!!!!! --}}
-        <p style="opacity: 0.4; margin-bottom:8px">avatar and name</p>
+
+        <header class="blog-detail-header">
+            <div class="blog-detail-header__image">
+                {{-- <img src="{{ asset('images/default-avatar.webp') }}" alt="User avatar"> --}}
+                <img src="{{ $post->user->image_url }}" alt="User avatar">
+            </div>
+            <p class="blog-detail-header__name">
+                {{ $post->user->name }}
+            </p>
+        </header>
 
         @if($post->image_url)
             <div class="blog-card-image">
@@ -20,26 +34,30 @@
                     loading="lazy"
                 />
             </div>
-        @endif        
-        <p>
-            {{ $post->published_at?->format('d,m,Y') }}
-        </p>   
+        @endif         
 
-        {{-- Give class for style!!!!!!!!!!! --}}
-        <div style="margin-bottom:10px">{!! $post->text !!}</div>
+        <div class="blog-detail-content">{!! $post->text !!}</div>
 
-        {{-- Give class for style!!!!!!!!!!! --}}
-        <p style="opacity: 0.4; margin-bottom:8px">date and so on..</p>
-
+        <footer class="blog-detail-footer">
+            <p class="blog-detail-footer__date">
+                {{ $post->created_at?->format('d.m.Y') }}
+            </p>
+        </footer>
     </section> 
     
     {{-- comments section --}}
     <section class="card">
-        <h2 class="comment-section-title">Comments ({{$post->comments->count()}})</h2>  
+        <h2 class="comment-section-title">
+            Comments ({{$post->approvedComments->count()}})
+
+            @if($notApproved)
+                <small class="comment-section-title__subtitle">not approved: {{ $notApproved }}</small>
+            @endif
+        </h2>  
 
         @include('public.blog.components.comment-form', ['postSlug' => $post->slug])
 
-        @include('public.blog.components.comment-list', ['comments' => $post->comments])
+        @include('public.blog.components.comment-list', ['comments' => $post->approvedComments])
     </section>
 @endsection
 

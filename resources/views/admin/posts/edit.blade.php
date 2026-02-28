@@ -5,7 +5,7 @@
         <header class="header">
             <h1 class="header__title">Edit Post</h1>
             <div class="header__actions">
-                @include('admin.components.back-btn')
+                @include('admin._components.back-btn')
             </div>
         </header>
 
@@ -26,11 +26,11 @@
 
                 <div class="input-section">
 
-                    @include('admin.components.form.input-element', [
+                    @include('admin._components.form.input-element', [
                         'name' => 'title',
                         'value' => $post->title
                     ])  
-                    @include('admin.components.form.textarea-element', [
+                    @include('admin._components.form.textarea-element', [
                         'name' => 'text',
                         'value' => $post->text
                     ])    
@@ -48,9 +48,9 @@
                         <h6 style="color:red;">ТУт кнопку добавления нового изображения</h6>
                     </div> --}}
 
-                    @include('admin.components.form.input-image-element')                      
+                    @include('admin._components.form.input-image-element')                      
                     
-                    @include('admin.components.form.select-boolean-element', [
+                    @include('admin._components.form.select-boolean-element', [
                         'name' => 'is_published',
                         'value' => $post->is_published,
                         'true_title' => 'Published',

@@ -20,7 +20,7 @@ class StoreRequest extends FormRequest
             'title'        => ['required', 'string', 'max:255'],
             'text'         => ['nullable', 'string', 'max:10000'],
             'category_id'  => ['nullable', 'exists:categories,id'],
-            'is_published' => ['required', 'boolean'],
+            'is_published' => ['nullable', 'boolean'],
             'image'        => ['image:jpeg,png,jpg,webp', 'max:10000']
         ];
     }

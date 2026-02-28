@@ -5,7 +5,7 @@
         <header class="header">
             <h1 class="header__title">New Post</h1>
             <div class="header__actions">
-                @include('admin.components.back-btn')
+                @include('admin._components.back-btn')
             </div>
         </header>
 
@@ -28,25 +28,27 @@
                 @endisset
 
                 <div class="input-section">
-                    @include('admin.components.form.select-element', [
+                    @include('admin._components.form.select-element', [
                         'name' => 'category_id',
                         'array' => $categories,
                         'item_id' => $category_id ?? null,
                         'placeholder' => '— Select category —'
                     ])     
 
-                    @include('admin.components.form.input-element', ['name' => 'title'])
+                    @include('admin._components.form.input-element', ['name' => 'title'])
 
-                    @include('admin.components.form.textarea-element', ['name' => 'text'])   
+                    @include('admin._components.form.textarea-element', ['name' => 'text'])   
 
-                    @include('admin.components.form.input-image-element')                                          
+                    @include('admin._components.form.input-image-element')                                          
                       
-                    @include('admin.components.form.select-boolean-element', [
-                        'name' => 'is_published',
-                        'value' => true,
-                        'true_title' => 'Published',
-                        'false_title' => 'Not published',
-                    ])                     
+                    @if(auth()->user()->is_root)
+                        @include('admin._components.form.select-boolean-element', [
+                            'name' => 'is_published',
+                            'value' => true,
+                            'true_title' => 'Published',
+                            'false_title' => 'Not published',
+                        ])     
+                    @endif                
                 </div>              
                 
                 <div class="submit-section">

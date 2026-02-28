@@ -7,11 +7,11 @@
 
 <div class="table-item-actions">
 
-    @include('admin.components.table.item-btn-edit', [
+    @include('admin._components.table.item-btn-edit', [
         'route' => $editRoute
     ])
 
-    @include('admin.components.table.item-btn-delete', [
+    @include('admin._components.table.item-btn-delete', [
         'route' => $deleteRoute,
         'confirmMesage' => $confirmMessage
     ])

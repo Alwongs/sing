@@ -20,14 +20,15 @@
              {!! $post->highlighted_text ?? Str::limit(strip_tags($post->text), 150) !!}
 
             <a href="{{ route('blog.post', $post->slug) }}" class="read-more-link">
-                Читать далее
+                Read more
             </a>
         </div>        
 
         @include('public.blog.components.card-footer', [
             'author' => $post->user->name,
+            'avatar' => $post->user->image_url,
             'date'   => $post->created_at,
-            'commentsCount' => $post->comments->count()
+            'commentsCount' => $post->approvedComments->count()
         ])
     </article>
 @endif

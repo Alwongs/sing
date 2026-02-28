@@ -1,15 +1,15 @@
 <li class="table-item">
 
-    @include('admin.components.table.item-id', [
+    @include('admin._components.table.item-id', [
         'id' => $category->id
     ])
 
-    @include('admin.components.table.item-title', [
+    @include('admin._components.table.item-title', [
         'title' => $category->title,
         'url' => route('categories.show', $category)
     ])    
 
-    @include('admin.components.table.item-actions', [
+    @include('admin._components.table.item-actions', [
         'editRoute'   => route('categories.edit', $category),
         'deleteRoute' => route('categories.destroy', $category),
         'model' => $category,

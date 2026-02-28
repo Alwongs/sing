@@ -48,46 +48,67 @@ class ImageService implements ImageServiceInterface
     {
         $originalsPath = config('images.paths.originals');
         $previewsPath = config('images.paths.previews');
-
         if ($request->hasFile('image')) {
             $manager = new ImageManager(new Driver());
             $image = $manager->read($request->file('image'));
-
             $extention = $request->file('image')->getClientOriginalExtension();
             $newImageName = now()->format('Ymd_His') . '-' . self::transliterate($request->title) . '.' . $extention;
-    
             if (!File::exists(Storage::path($originalsPath))) {
                 Storage::makeDirectory($originalsPath);
             }     
-    
             if (!File::exists(Storage::path($previewsPath))) {
                 Storage::makeDirectory($previewsPath);
             }            
-            
             $image->scale(height: 900);
             $image->save(Storage::path($originalsPath) . '/' . $newImageName);
-    
             $image->scale(height: 150);
             $image->save(Storage::path($previewsPath) . '/' . $newImageName);
-
             return $newImageName;
         } else {
             return null;
         }
     }
 
-    public function removeFromStorage($imageName)
+    public function saveAvatarInStorage($request): string
     {
-        $originalsPath = config('images.paths.originals') . '/' . $imageName;
-        $previewsPath = config('images.paths.previews') . '/' . $imageName;       
+        $avatarPath = config('images.paths.avatars');
 
-        if (File::exists(Storage::path($originalsPath))) {
-            Storage::delete($originalsPath);
+        if ($request->hasFile('image')) {
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($request->file('image'));
+
+            $extention = $request->file('image')->getClientOriginalExtension();
+            $newImageName = now()->format('Ymd_His') . '-' . self::transliterate($request->name) . '.' . $extention;   
+    
+            if (!File::exists(Storage::path($avatarPath))) {
+                Storage::makeDirectory($avatarPath);
+            }            
+    
+            $image->scale(height: 150);
+            $image->save(Storage::path($avatarPath) . '/' . $newImageName);
+
+            return $newImageName;
+        } else {
+            return null;
         }
-        if (File::exists(Storage::path($previewsPath))) {
-            Storage::delete($previewsPath);
-        }
+    }    
+
+
+    public function removeFromStorage(string $imageName): bool
+    {
+        $safeName = basename($imageName);
+        $originalsPath = config('images.paths.originals') . '/' . $safeName;
+        $previewsPath = config('images.paths.previews') . '/' . $safeName;  
+        
+        return Storage::delete($originalsPath) && Storage::delete($previewsPath);
     }  
+
+    public function removeAvatarFromStorage(string $imageName): bool
+    {
+        $avatarPath = config('images.paths.avatars') . '/' . basename($imageName);  
+        return Storage::delete($avatarPath);
+    }      
+
 
     public function prepearData($data, $newImageName): array
     {

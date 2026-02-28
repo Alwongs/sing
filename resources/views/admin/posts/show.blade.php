@@ -5,13 +5,13 @@
         <header class="header">
             <h1 class="header__title">{{ $post->title }}</h1>
             <div class="header__actions">
-                @include('admin.components.back-btn')
+                @include('admin._components.back-btn')
 
-                @include('admin.components.btn.edit-btn', [
+                @include('admin._components.btn.edit-btn', [
                     'route' => route('posts.edit', $post)
                 ])
 
-                @include('admin.components.btn.delete-btn', [
+                @include('admin._components.btn.delete-btn', [
                     'route' => route('posts.destroy', $post),
                     'confirmMessage' => 'Are you sure you want to delete the post: "' . $post->title . '"'
                 ])                

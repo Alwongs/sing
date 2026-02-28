@@ -16,6 +16,7 @@ return new class extends Migration
             $table->boolean('is_root')->default(false);            
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('image_name')->nullable();             
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

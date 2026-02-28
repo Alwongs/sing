@@ -4,7 +4,7 @@
         <section class="aside-profile card">
             <div class="flex-container flex-start-center gap-20">
                 <div class="aside-profile__image">
-                    <img src="{{ asset('images/default-avatar.webp') }}" alt="User avatar">
+                    <img src="{{ Auth::user()->image_url }}" alt="User avatar">
                 </div>
 
                 <form class="flex-1" action="{{ route('logout') }}" method="POST">

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-    protected $fillable = [ 'post_id', 'user_id', 'guest_name', 'guest_email', 'body', 'is_approved' ];
+    protected $fillable = [ 'post_id', 'user_id', 'guest_name', 'body', 'is_approved' ];
     protected $casts = ['is_approved' => 'boolean'];
 
     /* ---------- relations ---------- */

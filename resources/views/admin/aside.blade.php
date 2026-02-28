@@ -5,7 +5,7 @@
 
     <div class="aside-auth-block">
         <div class="aside-auth-block-image">
-            <img src="{{ asset('images/default-avatar.webp') }}" alt="">
+            <img src="{{ auth()->user()->image_url }}" alt="">
         </div>
 
         <nav class="aside-auth-block-info">
@@ -31,10 +31,14 @@
         </h2>
 
         <nav class="aside-app-navigation">
-            <a class="aside-nav-link" href="{{ route('admin.pollinations') }}">Pollinations</a>
-            <a class="aside-nav-link" href="{{ route('categories.index') }}">Categories</a>
+            @if(auth()->user()->is_root)
+                <a class="aside-nav-link" href="{{ route('users.index') }}">Users</a>
+                <a class="aside-nav-link" href="{{ route('admin.pollinations') }}">Pollinations</a>
+                <a class="aside-nav-link" href="{{ route('categories.index') }}">Categories</a>
+                <a class="aside-nav-link" href="{{ route('comments.index') }}">Comments</a>
+                <a class="aside-nav-link" href="{{ route('admin.settings') }}">Settings</a>
+            @endif
             <a class="aside-nav-link" href="{{ route('posts.index') }}">Posts</a>
-            <a class="aside-nav-link" href="{{ route('admin.settings') }}">Settings</a>
         </nav>
     </div>
 </aside>

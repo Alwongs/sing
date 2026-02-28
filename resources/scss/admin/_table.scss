@@ -23,21 +23,28 @@
         flex: 1;
         font-size: 16px;
         font-weight: 500;
-        // color: rgb(65, 88, 104);
         text-transform: capitalize;
-        // text-decoration: underline;
         transition: 0.2s;
         &.mute {
-            // color: rgb(202, 221, 236);    
+            color: rgb(202, 221, 236);    
         }
         &:hover {
             color: rgb(0, 149, 255);
+        }
+        &.root-color {
+            color: rgb(236, 25, 25);
+            font-weight: 600;
         }
     }
     &__date {
         font-size: 14px;
         font-weight: 300;   
         // color: rgb(139, 161, 179);             
+    }
+    &__role {
+        .root-color {
+            color: rgb(236, 25, 25);
+        }
     }
 }
 

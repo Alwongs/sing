@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\Comment\StoreRequest;
+use App\Http\Requests\Comment\UpdateRequest;
 
 class CommentController extends Controller
 {
@@ -14,7 +14,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -28,18 +29,9 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request, Post $post)
+    public function store(Request $request)
     {
-        $data = $request->validated();
-
-        Comment::create([
-            'post_id'      => $post->id,
-            'user_id'      => auth()->id(),
-            'guest_name'   => auth()->check() ? null : $data['guest_name'],
-            'body'         => $data['body'],
-        ]);
-
-        return back()->with('success', 'Comment added.');
+        //
     }
 
     /**
@@ -55,15 +47,18 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('admin.comments.edit', compact('comment'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(UpdateRequest $request, Comment $comment)
     {
-        //
+        // dd($request);
+        $comment->update($request->validated());
+
+        return redirect()->route('comments.index')->with('success', 'Comment updated successfuly!');
     }
 
     /**
@@ -71,6 +66,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        // dd($comment);
+        $comment->delete();
+        return redirect()->back();
     }
 }

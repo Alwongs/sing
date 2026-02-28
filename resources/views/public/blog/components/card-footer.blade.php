@@ -1,5 +1,6 @@
 @props([
     'author' => 'no author',
+    'avatar' => asset('images/default-avatar.webp'),
     'date' => null,
     'commentsCount' => 0
 ])
@@ -14,7 +15,7 @@
           
         <div class="blog-card-footer__author">
             <div class="blog-card-footer__image">
-                <img src="{{ asset('images/default-avatar.webp') }}" alt="User avatar">
+                <img src="{{ $avatar }}" alt="User avatar">
             </div>
             <p class="blog-card-footer__autor-name">
                 {{ $author }}            

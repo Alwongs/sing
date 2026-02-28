@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete(); // null = гость
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete(); // null = guest
             $table->string('guest_name')->nullable();
             $table->string('guest_email')->nullable();
             $table->text('body');
-            $table->boolean('is_approved')->default(true);    // можно модерировать
+            $table->boolean('is_approved')->default(true);    // possible to moderate
             $table->timestamps();
         });
     }

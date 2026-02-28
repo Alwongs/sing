@@ -5,10 +5,10 @@
         <header class="header">
             <h1 class="header__title">{{ $category->title }}</h1>
             <div class="header__actions">
-                @include('admin.components.back-btn')
-                @include('admin.components.create-btn', [
+                @include('admin._components.back-btn')
+                @include('admin._components.create-btn', [
                     'title' => 'Create Post',
-                    'route' => route('posts.create.with-category', $category->id)
+                    'route' => route('admin.posts.create.with-category', $category->id)
                 ])              
             </div> 
         </header>

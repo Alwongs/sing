@@ -18,8 +18,8 @@
 
 .header {
     background-color: #fff;
-    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+    // border: 1px solid #ccc;
     border-radius: 4px;     
     height: 64px;
     padding: 0 30px;
@@ -58,4 +58,13 @@
         background-color: rgba(67, 170, 255, 0.4);
         color: rgba(21, 52, 78, 0.9);
     }
+}
+
+.one-line-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;    
 }

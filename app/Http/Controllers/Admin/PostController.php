@@ -26,10 +26,19 @@ class PostController extends Controller
         $this->imageService = $imageService;
     }
 
+    public function test()
+    {
+        echo "test";
+    }
 
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $user = auth()->user();
+        $query = Post::query();
+        if (!$user->is_root) {
+            $query->where('user_id', $user->id);
+        }
+        $posts = $query->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -46,9 +55,6 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories', 'category_id'));
     }
 
-
-
-
     public function store(StoreRequest $request): RedirectResponse
     {
         $validated = $request->validated();
@@ -57,11 +63,6 @@ class PostController extends Controller
                 $newImageName = $this->imageService->saveInStorage($request);
                 $validated['image_name'] = $newImageName;
             }
-
-            // $post = new Post();
-            // $post->title = $request->title;
-            // $post->body = $request->body;
-            // $post->save();
 
             $post = Post::create($validated);
 
@@ -72,6 +73,7 @@ class PostController extends Controller
                 ->with('error', 'Произошла ошибка при создании поста. Попробуйте снова.');
         }
        
+        // redirect
         $redirect = $request->input('redirect', Post::ROUTE_TO_POSTS);
         $allowedRedirects = [
             Post::ROUTE_TO_POSTS,
@@ -91,8 +93,6 @@ class PostController extends Controller
             ->route($redirect, $post)
             ->with('success', 'Пост успешно создан!');
     }
-
-
 
     public function show(Post $post)
     {

@@ -35,6 +35,11 @@ class Post extends Model
         return $this->hasMany(Comment::class)->latest();
     }    
 
+    public function approvedComments()
+    {
+        return $this->hasMany(Comment::class)->where('is_approved', true)->latest();
+    }    
+
 
     protected static function booted()
     {

@@ -4,6 +4,9 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
+    &__subtitle {
+        color: rgba(17, 54, 221, 0.7);
+    }
 }
 
 .comment-list-section {
@@ -21,8 +24,8 @@
     &__image {
         display: flex;
         justify-content: center;
-        padding: 2px;        
-        border: 1px solid red;
+        // padding: 2px;        
+        // border: 1px solid red;
         border-radius: 50%;
         width: 28px;
         height: 28px;

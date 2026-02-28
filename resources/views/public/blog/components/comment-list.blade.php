@@ -7,7 +7,7 @@
         <div class="comment">
             <header class="comment-header">
                 <div class="comment-header__image">
-                    <img src="{{ asset('images/default-avatar.webp') }}" alt="User avatar">
+                    <img src="{{ $comment->user->image_url }}" alt="User avatar">
                 </div>
                 <p class="comment-header__name">
                     {{ $comment->authorName() }}
