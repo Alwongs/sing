@@ -54,9 +54,19 @@
     }     
 }
 
-
-
-.btn-orange {
-    
+.like-btn {
+    // border: 3px solid blue;
+    line-height: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    &.liked {
+        cursor: default;        
+    }
 }
-
+.like-count {
+    // border: 3px solid blue;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 15px;
+    color: #999;
+}

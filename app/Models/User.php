@@ -59,7 +59,7 @@ class User extends Authenticatable
         if ($this->image_name) {
             return Storage::url(config('images.paths.avatars') . '/' . $this->image_name);
         }
-        return asset('images/default-avatar.webp'); // или путь к изображению по умолчанию
+        return asset(config('images.paths.default-avatar')); // или путь к изображению по умолчанию
     }    
    
 }

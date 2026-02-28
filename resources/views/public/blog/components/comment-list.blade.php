@@ -7,11 +7,14 @@
         <div class="comment">
             <header class="comment-header">
                 <div class="comment-header__image">
-                    <img src="{{ $comment->user->image_url }}" alt="User avatar">
+                    @if($comment->user)
+                        <img src="{{ $comment->user->image_url }}" alt="User avatar">
+                    @else
+                        <img src="{{ asset(config('images.paths.guest-avatar')) }}" alt="Guest avatar">
+                    @endif
                 </div>
                 <p class="comment-header__name">
                     {{ $comment->authorName() }}
-                    {{-- {{$comment->authorName()}} --}}
                 </p>
             </header>
             <p class="comment-body">{{$comment->body}}</p>
@@ -21,6 +24,6 @@
             </footer>
         </div>
     @empty
-        <p>Пока нет комментариев. Будьте первым!</p>
+        <p>No comments yet. Be first!</p>
     @endforelse        
 </section>  

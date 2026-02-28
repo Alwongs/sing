@@ -38,7 +38,9 @@
     align-items: flex-end;    
 }
 
-
+.gap-5 {
+    gap: 5px;    
+}
 .gap-10 {
     gap: 10px;
 }
@@ -52,3 +54,11 @@
 .flex-1 {
     flex: 1
 }
+
+.mb-4  { margin-bottom: 4px;  }
+.mb-6  { margin-bottom: 4px;  }
+.mb-8  { margin-bottom: 4px;  }
+.mb-10 { margin-bottom: 10px; }
+.mb-15 { margin-bottom: 15px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }

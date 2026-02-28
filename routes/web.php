@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\LikeController;
 
 // Route::get('/test', function () { return view('_layouts.test'); });
 
@@ -28,7 +29,9 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/avatar/{imageName}', [UserController::class, 'showAvatarByImageName'])->name('avatar.show');
 
     // move to BlogController
-    Route::post('/post/{post}/comments', [CommentController::class,'store'])->name('comments.store');    
+    Route::post('/post/{post}/comments', [CommentController::class,'store'])->name('comments.store'); 
+    
+    Route::post('/{post}/like', [LikeController::class, 'toggle'])->name('like.toggle');    
 });
 Route::prefix('projects')->name('projects.')->group(function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('index');

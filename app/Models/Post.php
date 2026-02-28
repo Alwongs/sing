@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use Stevebauman\Purify\Facades\Purify;
+use App\Models\Traits\Likeable;
 
 class Post extends Model
 { 
     use HasFactory;
+    use Likeable;
 
     public const ROUTE_TO_CATEGORY_POSTS = 'categories.show';
     public const ROUTE_TO_POSTS = 'posts.index';    

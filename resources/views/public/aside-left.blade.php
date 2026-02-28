@@ -2,7 +2,7 @@
 
     @auth
         <section class="aside-profile card">
-            <div class="flex-container flex-start-center gap-20">
+            <div class="flex-container flex-start-center gap-20 mb-4">
                 <div class="aside-profile__image">
                     <img src="{{ Auth::user()->image_url }}" alt="User avatar">
                 </div>
@@ -18,9 +18,18 @@
                 </form>
             </div>
 
-
             <h2 class="aside-profile__name">{{ auth()->user()->name }}</h2>            
-        </section>
+        </section>        
+    @else
+        <section class="aside-profile card">
+            <div class="flex-container flex-start-center mb-4">
+                <div class="aside-profile__image">
+                    <img src="{{ asset(config('images.paths.guest-avatar')) }}" alt="User avatar">
+                </div>
+            </div>
+
+            <h2 class="aside-profile__name">Guest</h2>            
+        </section>          
     @endauth
 
     <nav class="aside-nav card">
