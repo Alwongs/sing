@@ -47,9 +47,10 @@
 }
 
 .blog-card-footer {
+    // border: 3px solid blue;    
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     > div {
         display: flex;
         align-items: center;
@@ -142,7 +143,7 @@
 
 
 .blog-detail-footer {
-    
+
     display: flex;
     justify-content: space-between;   
     align-items: center;

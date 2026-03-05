@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Services;
 
 use App\Contracts\ImageServiceInterface;
-
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;

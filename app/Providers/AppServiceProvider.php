@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ImageServiceInterface;
-use App\Http\Services\ImageService;
+use App\Services\ImageService;
 use App\Services\HtmlPurifierService;
 use App\Observers\CategoryObserver;
 

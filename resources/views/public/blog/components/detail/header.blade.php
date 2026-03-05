@@ -1,3 +1,7 @@
+@props([
+    'post' => null
+])
+
 <header class="blog-detail-header">
     <div class="blog-detail-header__image">
         <img src="{{ $post->user->image_url }}" alt="User avatar">

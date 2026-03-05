@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
+use App\Models\User;
 use App\Contracts\ImageServiceInterface;
 
 class FileManageController extends Controller
@@ -18,7 +19,11 @@ class FileManageController extends Controller
 
     public function index()
     {
-        $usedImages = Post::whereNotNull('image_name')->pluck('image_name')->toArray();  
+        $usedImages = array_merge(
+            Post::whereNotNull('image_name')->pluck('image_name')->toArray(), 
+            User::whereNotNull('image_name')->pluck('image_name')->toArray()             
+        );     
+
         list($forgottenFiles, $forgottenCount) = $this->imageService->findUnusedImages($usedImages);
 
         return view('admin.settings.file-manage', compact('forgottenFiles', 'forgottenCount'));

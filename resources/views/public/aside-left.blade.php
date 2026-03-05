@@ -1,5 +1,4 @@
 <aside class="aside">
-
     @auth
         <section class="aside-profile card">
             <div class="flex-container flex-start-center gap-20 mb-4">
@@ -28,7 +27,7 @@
                 </div>
             </div>
 
-            <h2 class="aside-profile__name">Guest</h2>            
+            <h2 class="aside-profile__name">Welcome Guest</h2>            
         </section>          
     @endauth
 
@@ -47,5 +46,4 @@
             @endforeach
         </ul>
     </nav>
-   
 </aside>

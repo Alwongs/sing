@@ -44,10 +44,14 @@
 }
 .comment-body {
     margin-bottom: 8px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .comment-footer {
     display: flex;
+    justify-content: flex-end;
     gap: 10px;
     color: rgba(44, 59, 66, 0.4);
+    &__time {
+        font-size: 14px;
+    }
 }

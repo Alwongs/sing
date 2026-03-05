@@ -2,16 +2,8 @@
 
 @section('content')
 
-    <header class="header">
-        <h1 class="header__title">
-            {{ $category->title }}
-        </h1>
-    </header>
+    @include('public.blog.sections.page-header', ['title' => $category->title])      
 
-    <section class="blog-list">
-        @foreach($posts as $post)
-            @include('public.blog.components.blog-card')
-        @endforeach
-    </section>      
+    @include('public.blog.sections.blog-list')           
 
 @endsection

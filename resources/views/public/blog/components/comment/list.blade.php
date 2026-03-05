@@ -19,8 +19,8 @@
             </header>
             <p class="comment-body">{{$comment->body}}</p>
             <footer class="comment-footer">
-                <p class="comment-footer__likes">likes</p>
-                <p class="text-muted">{{$comment->created_at->diffForHumans()}}</p>
+                <p class="comment-footer__likes"></p>
+                <p class="comment-footer__time text-muted">{{$comment->created_at->diffForHumans()}}</p>
             </footer>
         </div>
     @empty

@@ -1,3 +1,7 @@
+@props([
+    'post' => null
+])
+
 @if($post->image_url)
     <div class="blog-card-image">
         <img

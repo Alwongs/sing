@@ -25,12 +25,7 @@ class PostController extends Controller
     {
         $this->imageService = $imageService;
     }
-
-    public function test()
-    {
-        echo "test";
-    }
-
+    
     public function index()
     {
         $user = auth()->user();
