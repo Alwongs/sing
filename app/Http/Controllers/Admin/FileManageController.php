@@ -17,12 +17,17 @@ class FileManageController extends Controller
         $this->imageService = $imageService;
     }
 
+    private function getUsedImages(): array
+    {
+        return array_merge(
+            Post::whereNotNull('image_name')->pluck('image_name')->toArray(),
+            User::whereNotNull('image_name')->pluck('image_name')->toArray()
+        );
+    }    
+
     public function index()
     {
-        $usedImages = array_merge(
-            Post::whereNotNull('image_name')->pluck('image_name')->toArray(), 
-            User::whereNotNull('image_name')->pluck('image_name')->toArray()             
-        );     
+        $usedImages = $this->getUsedImages();   
 
         list($forgottenFiles, $forgottenCount) = $this->imageService->findUnusedImages($usedImages);
 
@@ -32,9 +37,7 @@ class FileManageController extends Controller
     public function deleteUnusedImages(Request $request)
     {
         try {
-            $usedImages = Post::whereNotNull('image_name')
-                ->pluck('image_name')
-                ->toArray();
+            $usedImages = $this->getUsedImages();               
 
             list($deletedCount, $forgottenCount, $status) = $this->imageService->removeUnusedImages($usedImages);
 

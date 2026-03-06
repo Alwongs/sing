@@ -34,19 +34,9 @@
                         'name' => 'text',
                         'value' => $post->text
                     ])    
-                    
-                    <div class="form-element">
-                        <div class="form-preview">
-                            <img
-                                src="{{  Storage::url('images/previews/' . $post->image_name) }}"
-                                alt="Изображение поста" 
-                            />                            
-                        </div>
-                    </div>
-
-                    {{-- <div class="form-element">
-                        <h6 style="color:red;">ТУт кнопку добавления нового изображения</h6>
-                    </div> --}}
+                    @include('admin._components.form.preview-element', [
+                        'src' => Storage::url('images/previews/' . $post->image_name)
+                    ])  
 
                     @include('admin._components.form.input-image-element')                      
                     
