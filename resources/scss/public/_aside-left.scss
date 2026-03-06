@@ -1,13 +1,18 @@
 .aside-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     &__image {
         background-color: #bbb;
-        border: 1px solid rgb(60, 92, 110);
-        height: 100px;
-        width: 80px;
+        border: 5px solid #fff;
+        box-shadow: 0 0 1px 1px rgba(0,0,0, 0.2);
+        border-radius: 50%;
+        height: 144px;
+        width: 144px;
         display: flex;
         justify-content: center;
-        padding: 1px;
-        margin-bottom: 6px;
+        margin-bottom: 10px;
+        overflow: hidden;
         img {
             max-width: 100%;
             max-height: 100%;
@@ -15,7 +20,8 @@
         }        
     }
     &__name {
-        font-size: 18px;      
+        font-size: 18px;  
+        margin-bottom: 10px;    
     }
 }
 
