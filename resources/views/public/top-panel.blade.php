@@ -15,7 +15,9 @@
                 <div></div>
             @else
                 <a class="top-panel-auth-nav-link" href="{{ route('login') }}">Login</a>
-                <a class="top-panel-auth-nav-link" href="{{ route('register') }}">Register</a>
+                @if(env('ALLOW_REGISTRATION') === 'true') 
+                    <a class="top-panel-auth-nav-link" href="{{ route('register') }}">Register</a>
+                @endif
             @endauth
         </nav> 
     </div>
