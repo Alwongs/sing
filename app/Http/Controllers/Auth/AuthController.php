@@ -57,11 +57,18 @@ class AuthController extends Controller
 
     public function showRegisterForm()
     {
+        if (env('ALLOW_REGISTRATION') !== 'true') {
+            abort(403, 'Регистрация временно закрыта');
+        }        
         return view('auth.register');
     }
 
     public function register(Request $request)
     {
+        if (env('ALLOW_REGISTRATION') !== 'true') {
+            abort(403);
+        }
+
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
