@@ -1,0 +1,90 @@
+.table-item {
+    border-bottom: 1px solid #ddd;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: rgb(65, 88, 104);
+    &.mute {
+        color: rgb(202, 221, 236);      
+    }
+    &.empty-list {
+        justify-content: center;
+        color: rgb(126, 149, 167);
+        border: none;        
+    }
+    &__id {
+        font-size: 14px;        
+        // border: 1px solid red;
+        flex: 0 0 30px;       
+    }
+    &__title {
+        // border: 1px solid red;        
+        flex: 1;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: capitalize;
+        transition: 0.2s;
+        &.mute {
+            color: rgb(202, 221, 236);    
+        }
+        &:hover {
+            color: rgb(0, 149, 255);
+        }
+        &.root-color {
+            color: rgb(236, 25, 25);
+            font-weight: 600;
+        }
+    }
+    &__date {
+        font-size: 14px;
+        font-weight: 300;   
+        // color: rgb(139, 161, 179);             
+    }
+    &__role {
+        .root-color {
+            color: rgb(236, 25, 25);
+        }
+    }
+}
+
+.table-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.table-item-btn {
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 26px;
+    transition: all 0.2s ease;
+    color: #eee;
+    cursor: pointer;
+
+}
+.table-item-btn-edit {
+    background-color: #306bb8; 
+    &:hover {
+        background-color: #4998ff;  
+        color: #fff;              
+    }       
+}
+.table-item-btn-delete {
+    background-color: #d13636;    
+    &:hover {
+        background-color: #ff4d4d;   
+        color: #fff;              
+    }     
+}
+
+.table-item-link {
+    font-weight: 600;
+    transition: 0.2s;
+    &:hover {
+        color: rgb(0, 174, 255);
+    }
+}

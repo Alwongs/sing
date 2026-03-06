@@ -1,0 +1,48 @@
+
+.search-card {
+    // border: 3px solid red;
+
+    // padding: 4px 0;
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+}
+
+.search-card-main {
+    display: flex;
+    gap: 14px;
+    height: 80px;
+    margin-bottom: 4px;
+}
+
+.search-card-image {
+    // border: 3px solid rgb(40, 158, 255);
+    border-radius: 8px;    
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+    img {
+        border-radius: 6px;
+        display: block;
+        width: 100%; 
+        height: auto;  
+        object-fit: cover;
+    }    
+}
+.search-card-title {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+.search-card-text {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;      
+}
+

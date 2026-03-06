@@ -1,0 +1,106 @@
+.aside {
+    flex: 0 0 250px;
+    background-color: rgb(65, 88, 104);
+    padding: 0 14px;
+}
+
+
+.aside-home-block {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__link {
+        color: #ffc983;
+        transition: 0.2s;
+        &:hover {
+            color: #ffee01;
+        }        
+    }
+}
+
+
+.aside-auth-block {
+    // background-color: rgb(58, 119, 129);
+    box-shadow: 0 0 5px 1px rgba(0,255,255, 0.9); 
+    border-radius: 4px;       
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.aside-auth-block-image { 
+    width: 40px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        box-shadow: 0 0 3px 2px rgba(0,255,255, 0.8);    
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+.aside-auth-block-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    &__profile-link {
+        color: rgb(72, 255, 0);
+        font-size: 14px;
+        transition: 0.2s;
+        &:hover {
+            color: rgb(173, 255, 141);
+        }
+    }
+    &__logout {
+        color: rgb(223, 127, 103);
+        font-size: 12px;
+        cursor: pointer;
+        transition: 0.2s;
+        &:hover {
+            color: rgb(255, 183, 165);
+        }        
+    }
+}
+
+
+.aside-navigation-block {
+    background-color: rgba(255,255,255, 0.05);   
+    box-shadow: 0 0 5px 1px rgba(200,255,255, 0.9);   
+    border-radius: 4px;
+    padding: 10px 0; 
+}
+
+.aside-navigation-block-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffc983;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.aside-app-navigation {
+    // border-top: 1px solid rgb(88, 124, 148);
+    // border-bottom: 1px solid rgb(88, 124, 148);
+    display: flex;
+    flex-direction: column;
+}
+
+.aside-nav-link {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    height: 42px;
+    padding-left: 20px;
+    color: #ccc;
+    transition: 0.2s;
+    &:hover {
+        background-color: rgba(200,255,255, 0.1); 
+        color: #ffee01;
+    }
+}

@@ -5,17 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        @if(! app()->environment('production'))
+            <meta name="robots" content="noindex, nofollow">
+        @endif        
+
         <title>{{ config('app.name', 'WebSite') }}</title>
 
         @vite(['resources/scss/public/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="admin-layout">
-            @include('public.components.top-panel')
+        <div class="public-layout">
+            @include('public.top-panel')
 
-            <div class="content">
-                @yield('content')
+            <div class="content-wrapper">
+                <div class="container flex-container flex-center-start">
+                    @include('public.aside-left')
+
+                    <main class="main">
+                        @yield('content')
+                    </main>
+
+                    @include('public.aside-right')
+                </div>
             </div>
+
+            @include('public.footer')
         </div>        
     </body>
 </html>

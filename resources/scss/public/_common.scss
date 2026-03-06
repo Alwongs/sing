@@ -1,26 +1,65 @@
-body {
-    background-color: #ddd;
+
+.border-red {
+    border: 3px solid red;    
 }
-.admin-layout {
-    background-color: rgb(243, 240, 238);
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.test-class {
+    color:red;
+}
+
+body {
+    background-color: #eee;
+}
+.public-layout {
+    // background-color: #aae1eb;
+    font-family: 'Arial', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(44, 59, 66);
     min-height: 100vh;
-    width: 1000px;
     margin: 0 auto;
 }
 
-.content {
-    padding: 10px;
-    color: rgb(58, 64, 70)
+mark {
+    // background-color: red;
+}
+
+.main { 
+    flex: 1 1 600px;
+    padding: 0 20px;
 }
 
 .header {
     border-bottom: 1px solid #aaa;
     padding-bottom: 8px;
-    margin-bottom: 44px;
+    margin-bottom: 30px;
+    &__title {
+        font-size: 24px;
+    }
 }
 
-h1 {
-    font-size: 22px;
-    // color: #ddd;s
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0, 0.1);
+    padding: 16px;
+    margin-bottom: 20px;
+    &__title {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 14px;        
+    }
+}
+
+.alert {
+    // border: 1px solid #aaa;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+.alert-empty {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+.footer {
+    background-color: rgb(222, 222, 222);
+    height: 200px;
 }

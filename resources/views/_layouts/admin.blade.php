@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="robots" content="noindex, nofollow">       
 
         <title>{{ config('app.name', 'Admin') }}</title>
 
@@ -11,7 +12,7 @@
     </head>
     <body>
         <div class="admin-layout">
-            @include('admin.components.top-panel')
+            @include('admin.aside')
 
             <div class="content">
                 @yield('content')
