@@ -84,6 +84,7 @@ class AuthController extends Controller
 
     public function profile()
     {
+
         $user = Auth::user();
         return view('auth.profile', compact('user'));
     }
@@ -146,16 +147,4 @@ class AuthController extends Controller
 
         return redirect()->route('profile')->with('status', 'Password changed successfuly!');
     }
-
-    // public function showAvatar($id)
-    // {
-    //     $user = User::findOrFail($id);
-
-    //     if ($user->id !== auth()->id()) {
-    //         abort(403);
-    //     }
-
-    //     $path = storage_path('app/private/' . $user->image_name);
-    //     return response()->file($path);
-    // }
 }

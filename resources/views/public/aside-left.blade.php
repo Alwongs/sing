@@ -1,23 +1,21 @@
 <aside class="aside">
     @auth
         <section class="aside-profile card">
-            <div class="flex-container flex-start-center gap-20 mb-4">
-                <div class="aside-profile__image">
-                    <img src="{{ Auth::user()->image_url }}" alt="User avatar">
-                </div>
-
-                <form class="flex-1" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button
-                        type="submit"
-                        class="btn btn-info-outline"
-                    >
-                        Exit
-                    </button>
-                </form>
+            <div class="aside-profile__image">
+                <img src="{{ Auth::user()->image_url }}" alt="User avatar">
             </div>
 
-            <h2 class="aside-profile__name">{{ auth()->user()->name }}</h2>            
+            <h2 class="aside-profile__name">{{ auth()->user()->name }}</h2>    
+            
+            <form class="width-full" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button
+                    type="submit"
+                    class="btn btn-info-outline"
+                >
+                    Exit
+                </button>
+            </form>            
         </section>        
     @else
         <section class="aside-profile card">
