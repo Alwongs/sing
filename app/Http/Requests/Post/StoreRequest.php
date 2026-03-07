@@ -52,6 +52,22 @@ class StoreRequest extends FormRequest
                 }
             }
         });
-    }    
+    }   
 
+    public function validated($key = null, $default = null)
+    {
+        $validated = parent::validated($key, $default);
+        
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            $validated['is_published'] = false;
+        }
+        
+        // Если запросили конкретный ключ, вернуть его
+        if (!is_null($key)) {
+            return data_get($validated, $key, $default);
+        }
+        
+        return $validated;
+    }  
 }

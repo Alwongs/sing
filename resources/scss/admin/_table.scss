@@ -35,6 +35,10 @@
             color: rgb(236, 25, 25);
             font-weight: 600;
         }
+        &.admin-color {
+            color: rgb(25, 39, 236); 
+            font-weight: 600;
+        }        
     }
     &__date {
         font-size: 14px;
@@ -42,8 +46,16 @@
         // color: rgb(139, 161, 179);             
     }
     &__role {
+        flex: 0 0 60px;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        // border: 1px solid red;   
         .root-color {
             color: rgb(236, 25, 25);
+        }
+        .admin-color {
+            color: rgb(25, 39, 236);            
         }
     }
 }

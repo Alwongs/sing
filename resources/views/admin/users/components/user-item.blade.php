@@ -7,12 +7,20 @@
     @include('admin._components.table.item-title', [
         'title' => $user->name,
         'url' => route('users.show', $user),
-        'classes' => $user->is_root ? 'root-color' : ''
+        'classes' => $user->is_root ? 'root-color' : '',
+        'classes' => trim(
+            ($user->is_root ? 'root-color' : '') .
+            ($user->is_admin && !$user->is_root ? 'admin-color' : '')
+        )
     ])  
     
-    @include('admin._components.table.item-root', [
-        'isRoot' => $user->is_root
-    ])    
+    @if($user->is_root)
+        @include('admin._components.table.item-root')   
+    @endif       
+
+    @if(!$user->is_root && $user->is_admin)
+        @include('admin._components.table.item-admin')
+    @endif      
 
     @include('admin._components.table.item-actions', [
         'editRoute'   => route('users.edit', $user),

@@ -1,4 +1,4 @@
 
 <div class="table-item__role">
-    <b class="root-color">root</b>
+    <b class="admin-color">admin</b>
 </div>

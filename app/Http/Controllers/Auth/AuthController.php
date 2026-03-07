@@ -57,7 +57,7 @@ class AuthController extends Controller
 
     public function showRegisterForm()
     {
-        if (env('ALLOW_REGISTRATION') !== 'true') {
+        if (env('ALLOW_REGISTRATION') != 'true') {
             abort(403, 'Регистрация временно закрыта');
         }        
         return view('auth.register');
@@ -65,7 +65,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        if (env('ALLOW_REGISTRATION') !== 'true') {
+        if (env('ALLOW_REGISTRATION') != 'true') {
             abort(403);
         }
 

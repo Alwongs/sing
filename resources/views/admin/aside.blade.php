@@ -31,14 +31,21 @@
         </h2>
 
         <nav class="aside-app-navigation">
-            @if(auth()->user()->is_root)
+            @if(auth()->user()->is_root)         
+                <a class="aside-nav-link" href="{{ route('admin.posts.all-users-posts') }}">
+                    All Posts @if($unpublishedPostsCount > 0) ({{ $unpublishedPostsCount }}) @endif 
+                </a>
                 <a class="aside-nav-link" href="{{ route('users.index') }}">Users</a>
                 <a class="aside-nav-link" href="{{ route('admin.pollinations') }}">Pollinations</a>
-                <a class="aside-nav-link" href="{{ route('categories.index') }}">Categories</a>
-                <a class="aside-nav-link" href="{{ route('comments.index') }}">Comments</a>
                 <a class="aside-nav-link" href="{{ route('admin.settings') }}">Settings</a>
             @endif
-            <a class="aside-nav-link" href="{{ route('posts.index') }}">Posts</a>
+
+            @if(auth()->user()->is_admin)
+                <a class="aside-nav-link" href="{{ route('categories.index') }}">Categories</a>
+                <a class="aside-nav-link" href="{{ route('comments.index') }}">Comments</a>
+            @endif     
+
+            <a class="aside-nav-link" href="{{ route('posts.index') }}">My Posts</a>        
         </nav>
     </div>
 </aside>

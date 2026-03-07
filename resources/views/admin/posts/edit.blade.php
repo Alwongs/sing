@@ -40,12 +40,14 @@
 
                     @include('admin._components.form.input-image-element')                      
                     
-                    @include('admin._components.form.select-boolean-element', [
-                        'name' => 'is_published',
-                        'value' => $post->is_published,
-                        'true_title' => 'Published',
-                        'false_title' => 'Not published',
-                    ]) 
+                    @if(auth()->user()->is_admin)
+                        @include('admin._components.form.select-boolean-element', [
+                            'name' => 'is_published',
+                            'value' => $post->is_published,
+                            'true_title' => 'Published',
+                            'false_title' => 'Not published',
+                        ]) 
+                    @endif                      
                 </div>              
                 
                 <div class="submit-section">

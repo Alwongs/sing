@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
+use App\Models\Post;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,14 @@ class ViewComposerServiceProvider extends ServiceProvider
                 return Category::orderBy('title')->get();
             });
 
-            $view->with('categories', $categories);
+            $unpublishedPostsCount = cache()->remember('unpublished.posts.count', 600, function () {
+                return Post::where('is_published', false)->count();
+            });            
+
+            $view->with([
+                'categories' => $categories,
+                'unpublishedPostsCount' => $unpublishedPostsCount,
+            ]);
         });
     }
 

@@ -18,7 +18,7 @@ class UpdateRequest extends FormRequest
         return [
             'title'        => ['required', 'string', 'max:255'],
             'text'         => ['nullable',  'string' ],
-            'is_published' => ['required', 'boolean'],
+            'is_published' => ['nullable', 'boolean'],
             'image'        => ['image:jpeg,png,jpg,webp', 'max:10000']      
         ];
     }
@@ -46,12 +46,43 @@ class UpdateRequest extends FormRequest
     
     public function validated($key = null, $default = null)
     {
-        $data = parent::validated($key, $default);
 
-        if (is_array($data) && isset($data['slug'])) {
-            unset($data['slug']);
+        $validated = parent::validated();
+
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            $validated['is_published'] = false;
         }
 
-        return $data;
+        // 3. Удаляем slug, если он присутствует
+        if (isset($validated['slug'])) {
+            unset($validated['slug']);
+        }
+
+        // 4. Если запрошен конкретный ключ, возвращаем значение по ключу
+        if (!is_null($key)) {
+            return data_get($validated, $key, $default);
+        }
+
+        // 5. Иначе возвращаем весь массив
+        return $validated;
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $data = parent::validated($key, $default);
+        // if (is_array($data) && isset($data['slug'])) {
+        //     unset($data['slug']);
+        // }
+        // return $data;
     }    
 }

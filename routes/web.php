@@ -46,7 +46,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
         Route::get('/settings/file-manage', [FileManageController::class, 'index'])->name('settings.file-manage');
         Route::delete('/settings/delete-unused-images', [FileManageController::class, 'deleteUnusedImages'])->name('settings.delete-unused-images');  
-        Route::get('/posts/create/{category}', [PostController::class, 'createCategoryPost'])->name('posts.create.with-category');    
+        Route::get('/posts/create/{category}', [PostController::class, 'createCategoryPost'])->name('posts.create.with-category');     
+        Route::get('/posts/all-users-posts', [PostController::class, 'getAllUsersPosts'])->name('posts.all-users-posts');  
         Route::get('/avatar/{id}', [UserController::class, 'showAvatar'])->name('avatar.show');                  
     });
 

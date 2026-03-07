@@ -41,7 +41,7 @@
 
                     @include('admin._components.form.input-image-element')                                          
                       
-                    @if(auth()->user()->is_root)
+                    @if(auth()->user()->is_admin)
                         @include('admin._components.form.select-boolean-element', [
                             'name' => 'is_published',
                             'value' => true,

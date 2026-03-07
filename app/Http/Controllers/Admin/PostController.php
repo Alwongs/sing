@@ -28,23 +28,26 @@ class PostController extends Controller
     
     public function index()
     {
-        $user = auth()->user();
-        $query = Post::query();
-        if (!$user->is_root) {
-            $query->where('user_id', $user->id);
-        }
-        $posts = $query->get();
+        $posts = Post::where('user_id', auth()->user()->id)->get();
         return view('admin.posts.index', compact('posts'));
+    }
+
+    public function getAllUsersPosts()
+    {
+        $posts = Post::all();        
+        return view('admin.posts.index', compact('posts'));        
     }
 
     public function create()
     {
+        redirect()->setIntendedUrl(url()->previous());
         $categories = Category::all();
         return view('admin.posts.create', compact('categories'));
     }
 
     public function createCategoryPost(Category $category)
     {
+        redirect()->setIntendedUrl(url()->previous());        
         $categories = Category::all();        
         $category_id = $category->id;
         return view('admin.posts.create', compact('categories', 'category_id'));
@@ -53,6 +56,7 @@ class PostController extends Controller
     public function store(StoreRequest $request): RedirectResponse
     {
         $validated = $request->validated();
+
         try {
             if ($request->hasFile('image')) {
                 $newImageName = $this->imageService->saveInStorage($request);
@@ -64,29 +68,13 @@ class PostController extends Controller
         } catch (\Exception $e) {
             \Log::error('Ошибка при создании поста: ' . $e->getMessage());
             return redirect()
-                ->route('posts.index')
+                ->back()
                 ->with('error', 'Произошла ошибка при создании поста. Попробуйте снова.');
         }
        
-        // redirect
-        $redirect = $request->input('redirect', Post::ROUTE_TO_POSTS);
-        $allowedRedirects = [
-            Post::ROUTE_TO_POSTS,
-            Post::ROUTE_TO_CATEGORY_POSTS,
-        ];
-        
-        if (!in_array($redirect, $allowedRedirects)) {
-            $redirect = Post::ROUTE_TO_POSTS;
-        }
-        if ($redirect === Post::ROUTE_TO_CATEGORY_POSTS && $post->category_id) {
-            return redirect()
-                ->route($redirect, $post->category)
-                ->with('success', 'Пост успешно создан!');
-        }
-
         return redirect()
-            ->route($redirect, $post)
-            ->with('success', 'Пост успешно создан!');
+            ->intended(route('posts.index'))
+            ->with('success', 'Пост создан!');
     }
 
     public function show(Post $post)
@@ -96,6 +84,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        redirect()->setIntendedUrl(url()->previous());
         return  view('admin.posts.edit', compact('post'));
     }
 
@@ -105,35 +94,30 @@ class PostController extends Controller
         try {
             if ($request->hasFile('image')) {
                 $newImageName = $this->imageService->saveInStorage($request);
-
                 if ($post->image_name) {
                     $this->imageService->removeFromStorage($post->image_name);
                 }
-
                 $validated['image_name'] = $newImageName;
             }
-
             $post->update($validated);
 
         } catch (\Exception $e) {
-
             \Log::error('Ошибка при обновлении поста: ' . $e->getMessage());
-
             return redirect()
-                ->route('posts.index')
+                ->back()
                 ->with('error', 'Произошла ошибка при обновлении поста. Попробуйте снова.');
         }
-
         return redirect()
-            ->route('posts.index')
-            ->with('success', 'Пост успешно обновлён!');
+            ->intended(route('posts.index'))
+            ->with('success', 'Post updated');
     }
-
 
     public function destroy(Post $post)
     {
-        $this->imageService->removeFromStorage($post->image_name);        
+        if ($post->image_name) {
+            $this->imageService->removeFromStorage($post->image_name); 
+        }
         $post->delete();
-        return redirect()->route('posts.index');
+        return redirect()->back()->with('success', 'Post deleted.');
     }
 }

@@ -12,7 +12,7 @@
 
         <main class="main">
             <ul class="table">
-                @if(count($comments))
+                @if($comments->count())
                     @foreach($comments as $comment)
                         @include('admin.comments.components.comment-item')
                     @endforeach
