@@ -4,6 +4,7 @@
 @use 'container';
 @use 'btn';
 @use 'top-panel';
+@use 'menu';
 @use 'aside';
 @use 'aside-left';
 @use 'aside-right';
@@ -11,3 +12,18 @@
 @use 'comment';
 @use 'form';
 @use 'search';
+
+
+
+
+// @use "variables" as var;
+
+// @media (min-width: $desktop-min) and (max-width: $desktop-max) {
+      
+// }     
+// @media (min-width: $tablet-min) and (max-width: $tablet-max) {  
+       
+// }           
+// @media (max-width: $mobile-max) {  
+             
+// } 

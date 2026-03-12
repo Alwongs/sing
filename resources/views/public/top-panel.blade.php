@@ -1,5 +1,9 @@
 <header class="top-panel">
     <div class="container flex-container flex-between-center">
+        <button class="mobile-menu-toggle" aria-label="Меню">
+            <span></span><span></span><span></span> {{-- иконка гамбургера --}}
+        </button>
+
         <nav class="top-panel-navigation">
             @auth
                 @if(auth()->user()->isRoot())

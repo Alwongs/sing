@@ -1,4 +1,4 @@
-<aside class="aside">
+<aside class="aside aside-right">
     <div class="aside-search card">
 
         <h2 class="card__title">Search</h2>

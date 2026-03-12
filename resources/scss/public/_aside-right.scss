@@ -1,3 +1,11 @@
+@use "var";
+
+.aside-right {
+    @media (width <= var.$desktop) {
+        display: none;
+    }      
+}
+
 .aside-search {
     &__input-section {
         border: 1px solid #ccc;
@@ -22,3 +30,13 @@
     }
     
 }
+
+// @media (min-width: var.$desktop-min) and (max-width: var.$desktop-max) {
+
+// }     
+// @media (min-width: var.$tablet-min) and (max-width: var.$tablet-max) {  
+       
+// }           
+// @media (max-width: var.$mobile-max) {  
+             
+// } 

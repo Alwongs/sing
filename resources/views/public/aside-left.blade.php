@@ -1,4 +1,4 @@
-<aside class="aside">
+<aside id="aside-left" class="aside aside-left">
     @auth
         <section class="aside-profile card">
             <div class="aside-profile__image">

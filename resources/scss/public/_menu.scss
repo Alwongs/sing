@@ -1,0 +1,76 @@
+.mobile-menu-toggle {
+    display: none; /* скрыта на десктопе по умолчанию */
+    width: 32px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    z-index: 2; 
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    height: 4px;
+    background-color: #fff;
+    transition: transform 0.3s, opacity 0.3s;
+    &:not(:last-child) {
+        margin-bottom: 6px;
+    }
+}
+
+.mobile-menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.mobile-menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+}
+.mobile-menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Показываем кнопку только на мобильных */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: inline-block;
+    }
+}
+
+
+
+.mobile-menu {
+    background-color: rgba(20,30,34, 1.0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 70px 15px;
+    transition: 0.2s;
+    &.hidden {
+        left: -100%;
+        top: -100%;
+    }
+}
+
+.mobile-menu-nav {
+    background-color: rgba(30,40,44, 1.0);
+    border-radius: 10px;
+    box-shadow: 0 0 1px 1px rgba(0,0,0, 0.4);
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    &__title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: normal;
+        color: #ddd;
+    }
+    &__link {
+        // border: 3px solid green;
+        display: flex;
+        align-items: center;
+        height: 50px;
+        color: #fff;
+        font-size: 20px;
+        // margin-bottom: 20px;
+    }
+}

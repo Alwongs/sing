@@ -1,3 +1,11 @@
+@use "var";
+
+.aside-left {
+    @media (width <= var.$mobile) {
+        display: none;
+    }       
+}
+
 .aside-profile {
     display: flex;
     flex-direction: column;

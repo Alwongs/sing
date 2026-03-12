@@ -16,6 +16,8 @@
     <body>
         <div class="public-layout">
             @include('public.top-panel')
+            @include('public.mobile-menu')    
+            {{-- <div class="mobile-menu-overlay"></div>         --}}
 
             <div class="content-wrapper">
                 <div class="container flex-container flex-center-start">
