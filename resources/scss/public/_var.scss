@@ -1,4 +1,8 @@
 /* ---- screen sizes ---- */
-$desktop: 1439px;
-$tablet: 1023px;
-$mobile: 767px;
+$desktop: 1280px;
+$tablet: 1024px;
+$mobile: 768px;
+
+$mainThemeGradient: linear-gradient(to bottom, #002f6c, #005b96, #007acc);
+$menuGradient: linear-gradient(to bottom, #0e2b52, #004675, #0066aa);
+$mainThemeColor: #005b96;

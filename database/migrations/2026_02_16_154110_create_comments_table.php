@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete(); // null = guest
-            $table->string('guest_name')->nullable();
+            $table->string('guest_name', 50)->nullable();
             $table->string('guest_email')->nullable();
             $table->text('body');
             $table->boolean('is_approved')->default(true);    // possible to moderate

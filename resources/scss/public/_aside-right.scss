@@ -1,11 +1,5 @@
 @use "var";
 
-.aside-right {
-    @media (width <= var.$desktop) {
-        display: none;
-    }      
-}
-
 .aside-search {
     &__input-section {
         border: 1px solid #ccc;

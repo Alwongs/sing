@@ -4,26 +4,17 @@
 ])
 
 <footer class="blog-card-footer">
-    <div>   
+    <div class="">   
         @include('public.blog.components.likes', [
             'post' => $post,
             'sessionId' => $sessionId
         ])             
-        <p class="blog-card-footer__comments">
+        <p class="blog-card-footer__comments hide-in-mobile">
             Comments: {{ $post->approvedComments->count() }}
         </p>  
     </div>  
 
-    <div>   
-        <div class="blog-card-footer__author">
-            <div class="blog-card-footer__image">
-                <img src="{{ $post->user->image_url }}" alt="User avatar">
-            </div>
-            <p class="blog-card-footer__autor-name">
-                {{ $post->user->name }}            
-            </p> 
-        </div>
-
+    <div class="">   
         <p class="blog-card-footer__date">
             {{ optional($post->created_at)->format('d.m.Y') ?? 'no date' }}
         </p>  

@@ -13,7 +13,7 @@
 
         @vite(['resources/scss/public/app.scss', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="stop-scroll-menu-open-in-mobile">
         <div class="public-layout">
             @include('public.top-panel')
             @include('public.mobile-menu')    

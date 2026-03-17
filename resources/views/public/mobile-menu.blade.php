@@ -1,6 +1,22 @@
 <div id="mobileMenu" class="mobile-menu hidden">
 
     <nav class="mobile-menu-nav">
+        <h2 class="mobile-menu-nav__title">Auth</h2>      
+        
+        @auth
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="mobile-menu-nav__link" type="submit" >Exit</button>
+            </form>                        
+        @else
+            @if(env('ALLOW_REGISTRATION') == 'true') 
+                <a class="mobile-menu-nav__link" href="{{ route('login') }}">Login</a>                
+                <a class="mobile-menu-nav__link" href="{{ route('register') }}">Register</a>
+            @endif
+        @endauth
+    </nav>
+
+    <nav class="mobile-menu-nav">
         <h2 class="mobile-menu-nav__title">Navigation</h2>
         <ul class="mobile-menu-nav__list">
             @auth
