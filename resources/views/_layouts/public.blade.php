@@ -11,7 +11,7 @@
 
         <title>{{ config('app.name', 'WebSite') }}</title>
 
-        @vite(['resources/scss/public/app.scss', 'resources/js/app.js'])
+        @vite(['resources/scss/public/app.scss', 'resources/js/public/app.js'])
     </head>
     <body class="stop-scroll-menu-open-in-mobile">
         <div class="public-layout">

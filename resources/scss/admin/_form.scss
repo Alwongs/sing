@@ -1,3 +1,4 @@
+@use 'var';
 
 .form-container {
     max-width: 1000px;
@@ -18,9 +19,15 @@
     margin-bottom: 20px;
     width: 100%;
 }
+.form-element-js-btn-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
 
 .form-input, .form-textarea, .form-select {
-    box-shadow: inset 0 0 3px 1px rgba(65, 88, 104, 0.4); 
+    box-shadow: inset 0 0 3px 1px rgba(var.$mainThemeColor, var.$inputShadowOpacity); 
     outline: none;
     border: 1px solid #ccc;  
     padding: 0 10px;
@@ -39,6 +46,7 @@
     height: 300px;  
     padding: 10px;    
 }
+
 .form-preview {
     display: flex;
     justify-content: center;
@@ -47,7 +55,7 @@
     width: 144px;
     height: 144px;
     padding: 6px;
-    box-shadow: inset 0 0 3px 1px rgba(65, 88, 104, 0.4); 
+    box-shadow: inset 0 0 3px 1px rgba(var.$mainThemeColor, var.$inputShadowOpacity); 
     img {
         display: block;
         max-width: 100%;

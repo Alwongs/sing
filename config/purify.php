@@ -42,13 +42,15 @@ return [
         'default' => [
             'Core.Encoding' => 'utf-8',
             'HTML.Doctype' => 'HTML 4.01 Transitional',
-            'HTML.Allowed' => 'h1[class],h2[class],h3,h4,h5,h6,b,u,strong,i,em,s,del,a[href|title],ul,ol,li,p[style],br,span,img[width|height|alt|src],blockquote',
+            'HTML.Allowed' => 'div[class],h1[class],h2[class],h3,h4,h5,h6,b,u,strong,i,em,s,del,a[href|title],ul,ol,li,p[style],br,span,img[width|height|alt|src],blockquote',
             
             // Разрешённые классы (только те, что перечислены)
             'Attr.AllowedClasses' => [
                 'text-center',
                 'container',
-                'test-class'
+                'test-class',
+                'left-shift-10',
+                'left-shift-20'
                 // добавьте свои классы
             ],            
 

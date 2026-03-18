@@ -2,6 +2,6 @@
     'id' => 'no prop'
 ])
 
-<div class="table-item__id">
+<div class="table-item__id hide-in-mobile">
     {{ $id }}.
 </div>

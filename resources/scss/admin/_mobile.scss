@@ -1,0 +1,26 @@
+@use "var";
+
+.hide-in-mobile {
+    @media (width <= var.$mobile) {
+        display: none;
+    } 
+}
+.show-in-mobile {
+    @media (width <= var.$mobile) {
+        display: inline-block;
+    }     
+}
+
+.hide-in-tablet {
+    @media (width <= var.$desktop) {
+        display: none;
+    }      
+}
+
+.flex-column-in-mobile {
+    @media (width <= var.$mobile) {
+        flex-direction: column;
+    }     
+}
+
+

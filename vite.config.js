@@ -8,7 +8,8 @@ export default defineConfig({
                 'resources/scss/admin/app.scss',
                 'resources/scss/public/app.scss',
                 'resources/scss/guest/app.scss',
-                'resources/js/app.js'
+                'resources/js/admin/app.js',
+                'resources/js/public/app.js',
             ],
             refresh: true,
         }),

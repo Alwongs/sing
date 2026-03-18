@@ -8,13 +8,14 @@
 
         <title>{{ config('app.name', 'Admin') }}</title>
 
-        @vite(['resources/scss/admin/app.scss', 'resources/js/app.js'])
+        @vite(['resources/scss/admin/app.scss', 'resources/js/admin/app.js'])
     </head>
     <body>
+        @include('admin.top-panel-mobile') 
         <div class="admin-layout">
             @include('admin.aside')
 
-            <div class="content">
+            <div class="content">             
                 @yield('content')
             </div>
         </div>

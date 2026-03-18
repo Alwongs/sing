@@ -1,3 +1,6 @@
+@use "sass:color";
+@use 'var';
+
 .btn {
     border-radius: 2px;
     display: flex;
@@ -54,4 +57,25 @@
     font-size: 14px;
     transition: all 0.2s ease;     
     cursor: pointer;    
+}
+
+.form-element-js-btn {
+    background-color: color.scale(var.$mainThemeColor, $lightness: 14%);
+    // box-shadow: 0 0 1px 1px rgba(0,0,0, 0.7);
+    border-radius: 4px;
+    color: #fff;
+    min-width: 50px;
+    padding: 2px 10px;
+    font-size: 11px;
+    transition: 0.2s;  
+    &:hover {
+        background-color: color.scale(var.$mainThemeColor, $lightness: 44%);       
+    }
+}
+.show-result-js-btn {
+    background-color: rgb(216, 68, 0);
+    text-transform: uppercase;
+    &:hover {
+        background-color: color.scale(rgb(216, 68, 0), $lightness: 44%);       
+    }    
 }

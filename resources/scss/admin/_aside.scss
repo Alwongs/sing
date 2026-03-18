@@ -1,7 +1,25 @@
+@use 'var';
+
 .aside {
     flex: 0 0 250px;
-    background-color: rgb(65, 88, 104);
+    background-color: var.$mainThemeColor;
     padding: 0 14px;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    @media (width <= var.$mobile) {
+        position: absolute; // или fixed, если нужно поверх всего
+        top: 0;
+        left: 0;
+        width: 100%; // фиксированная ширина
+        height: 100vh; // на всю высоту
+        transform: translateX(-100%); // скрыт за левым краем
+        z-index: 1;
+        transition: transform 0.3s ease;
+
+        &.open { // класс, добавляемый при открытии
+            transform: translateX(0);
+        }
+    }
 }
 
 

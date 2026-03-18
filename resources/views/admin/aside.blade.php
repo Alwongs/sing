@@ -1,4 +1,4 @@
-<aside class="aside">
+<aside class="aside" id="aside">
     <nav class="aside-home-block">
         <a class="aside-home-block__link" href="{{ route('blog.index') }}">Website</a>        
     </nav>

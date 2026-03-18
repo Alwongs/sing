@@ -30,9 +30,11 @@
                         'name' => 'title',
                         'value' => $post->title
                     ])  
+
                     @include('admin._components.form.textarea-element', [
                         'name' => 'text',
-                        'value' => $post->text
+                        'value' => $post->text,
+                        'templates' => $templates
                     ])    
                     @include('admin._components.form.preview-element', [
                         'src' => Storage::url('images/previews/' . $post->image_name)

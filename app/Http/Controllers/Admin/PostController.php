@@ -42,7 +42,8 @@ class PostController extends Controller
     {
         redirect()->setIntendedUrl(url()->previous());
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $templates = config('templates');
+        return view('admin.posts.create', compact('categories', 'templates'));
     }
 
     public function createCategoryPost(Category $category)
@@ -85,7 +86,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         redirect()->setIntendedUrl(url()->previous());
-        return  view('admin.posts.edit', compact('post'));
+        $templates = config('templates');
+        return  view('admin.posts.edit', compact('post', 'templates'));
     }
 
     public function update(UpdateRequest $request, Post $post)

@@ -1,12 +1,28 @@
 {
-  "resources/js/app.js": {
-    "file": "app.C_w77F_W.js",
+  "_bootstrap.CAiCLEjY.js": {
+    "file": "bootstrap.CAiCLEjY.js",
+    "name": "bootstrap"
+  },
+  "resources/js/admin/app.js": {
+    "file": "app.DtJv5JDs.js",
     "name": "app",
-    "src": "resources/js/app.js",
-    "isEntry": true
+    "src": "resources/js/admin/app.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.CAiCLEjY.js"
+    ]
+  },
+  "resources/js/public/app.js": {
+    "file": "app.B367KanS.js",
+    "name": "app",
+    "src": "resources/js/public/app.js",
+    "isEntry": true,
+    "imports": [
+      "_bootstrap.CAiCLEjY.js"
+    ]
   },
   "resources/scss/admin/app.scss": {
-    "file": "app.Duo-2HsU.css",
+    "file": "app.DFG6-_yv.css",
     "src": "resources/scss/admin/app.scss"
   },
   "resources/scss/guest/app.scss": {
@@ -19,7 +35,7 @@
     ]
   },
   "resources/scss/public/app.scss": {
-    "file": "app.DFuBJWlh.css",
+    "file": "app.DbugkFr-.css",
     "src": "resources/scss/public/app.scss"
   }
 }

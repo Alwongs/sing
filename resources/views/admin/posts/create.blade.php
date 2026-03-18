@@ -37,7 +37,10 @@
 
                     @include('admin._components.form.input-element', ['name' => 'title'])
 
-                    @include('admin._components.form.textarea-element', ['name' => 'text'])   
+                    @include('admin._components.form.textarea-element', [
+                        'name' => 'text',
+                        'templates' => $templates
+                    ])   
 
                     @include('admin._components.form.input-image-element')                                          
                       

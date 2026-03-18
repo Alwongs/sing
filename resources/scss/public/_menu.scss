@@ -17,6 +17,7 @@ html:has(.mobile-menu:not(.hidden)) {
     &.hidden {
         // left: -100%;
         top: -100%;
+        opacity: 0;
     }
 }
 

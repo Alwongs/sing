@@ -1,0 +1,8 @@
+@use 'var';
+
+.top-panel-mobile {
+    display: none;
+    background-color: var.$mainThemeColor;
+    width: 100%;
+    height: 50px;
+}
