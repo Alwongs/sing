@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/scss/guest/app.scss',
                 'resources/js/admin/app.js',
                 'resources/js/public/app.js',
+                'resources/js/guest/app.js',
             ],
             refresh: true,
         }),

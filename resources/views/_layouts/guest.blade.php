@@ -8,7 +8,7 @@
 
         <title>{{ config('app.name', 'WebSite') }}</title>
 
-        @vite(['resources/scss/guest/app.scss', 'resources/js/app.js'])
+        @vite(['resources/scss/guest/app.scss', 'resources/js/guest/app.js'])
     </head>
     <body>
         <div class="guest-layout">
